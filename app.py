@@ -206,20 +206,23 @@ def enrich_news(news_items_json, topic_filter):
     filtered = items
     if topic_filter != "All":
         topic_keywords = {
-            "H-1B": ["h-1b", "h1b", "specialty occupation", "work visa"],
-            "F-1 / Students": ["f-1", "f1", "student", "opt", "stem", "daca"],
-            "Family Green Cards": ["family", "relative", "spouse", "i-130", "i-485", "adjustment"],
-            "Employment Green Cards": ["employment", "eb-1", "eb-2", "eb-3", "perm", "priority"],
+            "H-1B": ["h-1b", "h1b", "specialty occupation", "work visa", "h1"],
+            "F-1 / Students": ["f-1", "f1", "student", "opt", "stem", "daca", "cap-gap"],
+            "Family Green Cards": ["family", "relative", "spouse", "i-130", "i-485", "adjustment", "immediate relative"],
+            "Employment Green Cards": ["employment", "eb-1", "eb-2", "eb-3", "perm", "priority date", "labor"],
         }
         keywords = topic_keywords.get(topic_filter, [])
         if keywords:
             filtered = [i for i in items if any(k in (i.get("title","") + i.get("summary","")).lower() for k in keywords)]
-        if not filtered:
-            filtered = items
+        # Do NOT fall back — if nothing matches the filter, return empty and show message in UI
+
+    topic_instruction = ""
+    if topic_filter != "All":
+        topic_instruction = f'\n\nIMPORTANT: Only include items that are genuinely relevant to {topic_filter} visa holders or applicants. If an item is unrelated, omit it entirely from the output — do not include it with a low relevance note.'
 
     prompt = f"""You are an immigration news analyst. For each news item below, write a plain 2-sentence explanation of what it means for immigrants.
 
-News items: {json.dumps(filtered[:6])}
+News items: {json.dumps(filtered[:8])}{topic_instruction}
 
 Rules for priority — be honest and conservative:
 - "high": only if someone needs to take action right now (e.g. a deadline is imminent, a rule just changed)
@@ -231,6 +234,7 @@ Return a JSON array. Each object:
 - "title": same title as input
 - "link": same link as input
 - "published": same published date as input
+- "source": same source as input (e.g. "USCIS", "DHS", "White House")
 - "plain_summary": 2 sentences in plain English — what happened and who it affects
 - "priority": "high" | "medium" | "low"
 - "affects": specific group affected (e.g. "H-1B applicants", "family green card petitioners")
@@ -285,7 +289,7 @@ with tab1:
                 fetched_date = datetime.now().strftime("%B %d, %Y")
 
             if source == "file" and raw_items:
-                enriched = enrich_news(json.dumps(raw_items), topic_filter)
+                enriched = enrich_news(json.dumps(raw_items), topic_filter) or []
                 source_note = f"From USCIS.gov — last updated {fetched_date}"
             else:
                 fallback_prompt = f"""Summarize the most important US immigration developments from 2024-2025 that immigrants need to know about right now.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
@@ -316,7 +320,8 @@ Return a JSON array of up to 8 items. Each object:
             source_note = f"Based on USCIS.gov policy updates — {datetime.now().strftime('%B %d, %Y')}"
 
             if not enriched:
-                st.info("No items found for that filter. Try 'All'.")
+                filter_msg = f"No recent news specifically about **{topic_filter}** in the last 48-hour update." if topic_filter != "All" else "No news items available right now."
+                st.markdown(f"<div class='info-box'>{filter_msg} Try selecting <strong>All</strong> to see everything, or check back after the next update.</div>", unsafe_allow_html=True)
             else:
                 st.markdown(
                     f"<p style='color:#9ca3af; font-size:0.82rem; margin-bottom:1rem;'>{source_note}</p>",

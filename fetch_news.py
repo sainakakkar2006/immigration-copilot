@@ -58,14 +58,29 @@ FEDERAL_REGISTER_PARAMS = {
 IMMIGRATION_KEYWORDS = [
     "visa", "immigration", "immigrant", "h-1b", "h1b", "green card",
     "citizenship", "naturalization", "asylum", "refugee", "border",
-    "deportation", "removal", "uscis", "dhs", "passport", "travel ban",
-    "executive order", "alien", "nonimmigrant", "adjustment of status",
-    "parole", "daca", "tps", "i-130", "i-485", "f-1", "opt", "stem"
+    "deportation", "removal", "uscis", "passport", "travel ban",
+    "executive order", "nonimmigrant", "adjustment of status",
+    "parole", "daca", "tps", "i-130", "i-485", "f-1", "opt", "stem",
+    "work permit", "ead", "petition", "priority date", "visa bulletin",
+    "foreign national", "lawful permanent"
+]
+
+# Topics that are definitively NOT immigration news — skip regardless of summary
+EXCLUDE_KEYWORDS = [
+    "fifa", "world cup", "soccer", "football", "olympics", "fema",
+    "hurricane", "tornado", "flood", "wildfire", "earthquake", "disaster",
+    "cybersecurity", "cisa", "ransomware", "cyber attack", "data breach",
+    "secret service", "tsa checkpoint", "airport security screening",
+    "drug trafficking", "fentanyl", "human trafficking awareness"
 ]
 
 def is_immigration_related(title, summary=""):
-    text = (title + " " + summary).lower()
-    return any(kw in text for kw in IMMIGRATION_KEYWORDS)
+    title_lower = title.lower()
+    # Hard exclude non-immigration topics based on title alone
+    if any(kw in title_lower for kw in EXCLUDE_KEYWORDS):
+        return False
+    # Keyword must appear in the TITLE for non-USCIS sources (not just in body text)
+    return any(kw in title_lower for kw in IMMIGRATION_KEYWORDS)
 
 def fetch_rss_sources():
     items = []
