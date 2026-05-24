@@ -641,23 +641,39 @@ with tab4:
 
     with col_a:
         st.markdown("""
-        <div class="testimonial">
-            "I spent 3 months confused about which forms I needed. This tool gave me the full list in 5 minutes — and warned me about the conditional green card I didn't even know I'd get since we've been married less than 2 years."
-            <div class="author">— Priya, F-1 OPT → sponsoring husband</div>
+        <div class="card" style="margin-bottom:1rem;">
+            <div style="font-size:1.4rem; margin-bottom:0.6rem;">🆕</div>
+            <div style="font-weight:700; color:#111827; margin-bottom:0.4rem;">Just launched — and growing</div>
+            <p style="color:#374151; margin:0; line-height:1.7;">
+                Immigration Co-Pilot is a brand new tool. We don't have hundreds of reviews yet —
+                and we won't fake them. What we do have is a clear mission: make immigration
+                guidance accessible to every family, not just those who can afford a lawyer.
+            </p>
         </div>
         """, unsafe_allow_html=True)
 
         st.markdown("""
-        <div class="testimonial">
-            "Immigration lawyers quoted me $6,000 just for the I-130 package. I used this tool and filed myself. USCIS received and accepted everything."
-            <div class="author">— Carlos, sponsoring wife from Mexico</div>
+        <div class="card" style="margin-bottom:1rem; border-left:4px solid #f59e0b;">
+            <div style="font-weight:700; color:#111827; margin-bottom:0.6rem;">📊 The real numbers behind immigration</div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                <div style="color:#374151;">💸 <strong>$4,000–$10,000</strong> — average cost of an immigration attorney for a green card case <em style="color:#6b7280;">(source: American Immigration Lawyers Association)</em></div>
+                <div style="color:#374151;">📋 <strong>600,000+</strong> family-based green card applications filed every year in the US</div>
+                <div style="color:#374151;">⏳ <strong>30–50%</strong> of applicants receive an RFE (Request for Evidence) due to missing documents</div>
+                <div style="color:#374151;">🌎 <strong>45 million</strong> immigrants in the US navigating a system designed for lawyers</div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
         st.markdown("""
-        <div class="testimonial">
-            "The news hub is the only place I check for H-1B updates now. Everything else is either too technical or out of date."
-            <div class="author">— Ananya, H-1B holder, Google</div>
+        <div class="card" style="border-left:4px solid #16a34a;">
+            <div style="font-weight:700; color:#111827; margin-bottom:0.5rem;">✅ What we actually promise</div>
+            <div style="color:#374151; line-height:1.8;">
+                ◻️ Checklists built from official USCIS form instructions<br>
+                ◻️ Income thresholds pulled from the Federal Poverty Guidelines<br>
+                ◻️ News summaries based on real policy changes and court decisions<br>
+                ◻️ Your documents are never stored or shared<br>
+                ◻️ Always free — no catch
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
