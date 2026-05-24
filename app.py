@@ -290,6 +290,14 @@ with tab1:
 
             if source == "file" and raw_items:
                 enriched = enrich_news(json.dumps(raw_items), topic_filter) or []
+                # If filter returned nothing, show all items with a note
+                if not enriched and topic_filter != "All":
+                    enriched = enrich_news(json.dumps(raw_items), "All") or []
+                    st.markdown(
+                        f"<p style='color:#9ca3af; font-size:0.82rem; margin-bottom:0.5rem;'>"
+                        f"No news specifically about <strong>{topic_filter}</strong> in the latest update — showing all immigration news instead.</p>",
+                        unsafe_allow_html=True
+                    )
                 source_note = f"From USCIS.gov — last updated {fetched_date}"
             else:
                 fallback_prompt = f"""Summarize the most important US immigration developments from 2024-2025 that immigrants need to know about right now.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
@@ -320,8 +328,7 @@ Return a JSON array of up to 8 items. Each object:
             source_note = f"Based on USCIS.gov policy updates — {datetime.now().strftime('%B %d, %Y')}"
 
             if not enriched:
-                filter_msg = f"No recent news specifically about **{topic_filter}** in the last 48-hour update." if topic_filter != "All" else "No news items available right now."
-                st.markdown(f"<div class='info-box'>{filter_msg} Try selecting <strong>All</strong> to see everything, or check back after the next update.</div>", unsafe_allow_html=True)
+                st.markdown("<div class='info-box'>No news available right now. Check back after the next update.</div>", unsafe_allow_html=True)
             else:
                 st.markdown(
                     f"<p style='color:#9ca3af; font-size:0.82rem; margin-bottom:1rem;'>{source_note}</p>",
