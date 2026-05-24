@@ -121,17 +121,18 @@ p { color: #374151; line-height: 1.7; }
     width: 20px;
 }
 .stButton > button {
-    background: #111827 !important;
-    color: #ffffff !important;
-    border: none !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1.5px solid #d1d5db !important;
     border-radius: 6px !important;
     font-weight: 500 !important;
-    padding: 0.5rem 1.3rem !important;
+    padding: 0.5rem 1.4rem !important;
     font-size: 0.9rem !important;
 }
 .stButton > button:hover {
-    background: #374151 !important;
-    color: #ffffff !important;
+    background: #f9fafb !important;
+    color: #111827 !important;
+    border-color: #9ca3af !important;
 }
 a { color: #1d4ed8; }
 </style>
