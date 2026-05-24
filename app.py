@@ -233,17 +233,23 @@ def enrich_news(news_items_json, topic_filter):
         if not filtered:
             filtered = items
 
-    prompt = f"""You are an immigration news analyst. For each news item below, write a plain 2-sentence explanation of what it means for immigrants. Be direct and specific. Avoid filler words.
+    prompt = f"""You are an immigration news analyst. For each news item below, write a plain 2-sentence explanation of what it means for immigrants.
 
 News items: {json.dumps(filtered[:6])}
 
-Return a JSON array. Each object must have:
+Rules for priority — be honest and conservative:
+- "high": only if someone needs to take action right now (e.g. a deadline is imminent, a rule just changed)
+- "medium": important to know, but no immediate action needed
+- "low": background context, long-term changes, or informational updates
+Most items should be "medium". Do not make everything high priority.
+
+Return a JSON array. Each object:
 - "title": same title as input
 - "link": same link as input
-- "published": same published date
-- "plain_summary": 2 sentences in plain English explaining what changed and who it affects
-- "priority": "high" | "medium" | "low" based on how urgently immigrants should act
-- "affects": which group is most affected (e.g. "H-1B holders", "green card applicants", "all immigrants")
+- "published": same published date as input
+- "plain_summary": 2 sentences in plain English — what happened and who it affects
+- "priority": "high" | "medium" | "low"
+- "affects": specific group affected (e.g. "H-1B applicants", "family green card petitioners")
 """
     return generate(prompt)
 
@@ -291,15 +297,21 @@ with tab1:
             else:
                 # Fallback: Gemini generates news based on its training knowledge
                 st.info("USCIS.gov is not reachable from this server right now. Showing AI-generated summaries based on recent immigration developments instead. Links go to USCIS.gov directly.")
-                fallback_prompt = f"""List the 6 most significant US immigration developments from 2024-2025 that people should know about.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
+                fallback_prompt = f"""Summarize up to 6 notable US immigration policy developments or ongoing situations that are relevant as of 2025.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
+
+Rules:
+- Do NOT invent specific dates. Use only "2024" or "2025" or "ongoing".
+- Priority must reflect actual urgency: most items are "medium". Only use "high" if someone needs to act immediately. Use "low" for background context.
+- Write plain, factual summaries. No hype.
+- If you are not confident something is accurate, do not include it.
 
 Return a JSON array. Each object:
-- "title": factual headline
+- "title": factual, neutral headline (no sensationalism)
 - "link": "https://www.uscis.gov/newsroom"
-- "published": approximate date (e.g. "March 2025")
-- "plain_summary": 2 plain sentences explaining what happened and who it affects
-- "priority": "high" | "medium" | "low"
-- "affects": who is most affected"""
+- "published": "2024", "2025", or "ongoing" — nothing more specific
+- "plain_summary": 2 sentences explaining what the situation is and who it affects
+- "priority": "high" | "medium" | "low" — be conservative, most should be medium
+- "affects": specific group (e.g. "H-1B applicants", "spouse visa petitioners")"""
                 enriched = generate(fallback_prompt)
                 source_note = f"AI-generated summary — USCIS.gov not reachable on {datetime.now().strftime('%B %d, %Y')}"
 
