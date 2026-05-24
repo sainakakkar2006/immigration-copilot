@@ -157,34 +157,18 @@ def generate(prompt):
     )
     return json.loads(response.text)
 
-# Fetch real USCIS news from their RSS feed, cached 48 hours
-@st.cache_data(ttl=172800)
+# Read USCIS news from the JSON file saved by GitHub Actions every 2 days
 def fetch_uscis_news():
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    }
-    urls = [
-        "https://www.uscis.gov/rss/uscis-news.xml",
-        "https://www.uscis.gov/rss/uscis-alerts.xml",
-    ]
-    for url in urls:
-        try:
-            resp = requests.get(url, headers=headers, timeout=12)
-            if resp.status_code == 200:
-                feed = feedparser.parse(resp.content)
-                if feed.entries:
-                    items = []
-                    for entry in feed.entries[:8]:
-                        items.append({
-                            "title": entry.get("title", ""),
-                            "link": entry.get("link", ""),
-                            "summary": entry.get("summary", "")[:400],
-                            "published": entry.get("published", "")
-                        })
-                    return {"source": "uscis", "items": items}
-        except Exception:
-            continue
-    return {"source": "unavailable", "items": []}
+    try:
+        with open("data/uscis_news.json", "r") as f:
+            data = json.load(f)
+        items = data.get("items", [])
+        fetched_at = data.get("fetched_at", "")
+        if items:
+            return {"source": "file", "items": items, "fetched_at": fetched_at}
+    except Exception:
+        pass
+    return {"source": "unavailable", "items": [], "fetched_at": ""}
 
 # Fetch Federal Register immigration rules, cached 48 hours
 @st.cache_data(ttl=172800)
@@ -291,8 +275,18 @@ with tab1:
             raw_items = result.get("items", [])
             source = result.get("source", "unavailable")
 
-            if source == "uscis" and raw_items:
+            fetched_at = result.get("fetched_at", "")
+            if fetched_at:
+                try:
+                    fetched_date = datetime.fromisoformat(fetched_at).strftime("%B %d, %Y")
+                except Exception:
+                    fetched_date = datetime.now().strftime("%B %d, %Y")
+            else:
+                fetched_date = datetime.now().strftime("%B %d, %Y")
+
+            if source == "file" and raw_items:
                 enriched = enrich_news(json.dumps(raw_items), topic_filter)
+                source_note = f"From USCIS.gov — last updated {fetched_date}"
             else:
                 fallback_prompt = f"""Summarize up to 6 notable US immigration policy developments or ongoing situations that are relevant as of 2025.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
 
