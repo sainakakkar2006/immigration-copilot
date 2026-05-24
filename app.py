@@ -67,7 +67,7 @@ client = genai.Client(api_key=api_key)
 
 def generate(prompt):
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.0-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             temperature=0.2,
@@ -75,6 +75,23 @@ def generate(prompt):
         )
     )
     return json.loads(response.text)
+
+# Cache news for 2 hours — hundreds of users share the same result, saving API calls
+@st.cache_data(ttl=7200)
+def get_news_cached(topic):
+    topic_clause = f" Focus specifically on: {topic}." if topic != "All Topics" else ""
+    prompt = f"""You are a US immigration news analyst. Summarize the 5 most important and current US immigration developments that immigrants and visa holders need to know about in 2025.{topic_clause}
+
+Return ONLY a JSON array with exactly 5 objects, each with:
+- "headline": clear, informative headline (max 15 words)
+- "category": one of: H-1B | F-1/OPT | Family Immigration | Employment Green Card | DACA | Policy/Law | Processing Times
+- "summary": 2-3 sentences — what happened and why it matters
+- "impact": who is most affected (be specific)
+- "action": one concrete thing affected people should do
+- "urgency": "High" | "Medium" | "Low"
+
+Be factual and accurate."""
+    return generate(prompt)
 
 # ── Header ─────────────────────────────────────────────────────────────────────
 st.markdown("# 🗽 Immigration Co-Pilot")
@@ -104,21 +121,8 @@ with tab1:
 
     if load_btn:
         with st.spinner("Fetching latest immigration updates..."):
-            topic_clause = f" Focus specifically on: {topic}." if topic != "All Topics" else ""
-            prompt = f"""You are a US immigration news analyst. Summarize the 5 most important and current US immigration developments that immigrants and visa holders need to know about in 2025.{topic_clause}
-
-Return ONLY a JSON array with exactly 5 objects, each with:
-- "headline": clear, informative headline (max 15 words)
-- "category": one of: H-1B | F-1/OPT | Family Immigration | Employment Green Card | DACA | Policy/Law | Processing Times
-- "summary": 2-3 sentences — what happened and why it matters
-- "impact": who is most affected (be specific)
-- "action": one concrete thing affected people should do
-- "urgency": "High" | "Medium" | "Low"
-
-Be factual and accurate."""
-
             try:
-                items = generate(prompt)
+                items = get_news_cached(topic)
                 urgency_colors = {"High": "#dc3545", "Medium": "#fd7e14", "Low": "#28a745"}
                 urgency_icons  = {"High": "🔴", "Medium": "🟡", "Low": "🟢"}
 
