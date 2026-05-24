@@ -288,21 +288,30 @@ with tab1:
                 enriched = enrich_news(json.dumps(raw_items), topic_filter)
                 source_note = f"From USCIS.gov — last updated {fetched_date}"
             else:
-                fallback_prompt = f"""Summarize up to 6 notable US immigration policy developments or ongoing situations that are relevant as of 2025.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
+                fallback_prompt = f"""Summarize the most important US immigration developments from 2024-2025 that immigrants need to know about right now.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
+
+Include recent executive actions, policy changes from the Trump administration (January 2025 onwards), USCIS rule changes, visa processing changes, travel restrictions, and enforcement priorities. Cover things like:
+- Executive orders affecting immigration (birthright citizenship, travel bans, deportation policies)
+- H-1B lottery and rule changes
+- Green card processing backlogs and priority date movements
+- F-1/OPT/STEM OPT policy changes
+- Changes to asylum and refugee admissions
+- I-485 and adjustment of status processing updates
 
 Rules:
-- Do NOT invent specific dates. Use only "2024", "2025", or "ongoing".
-- Priority must reflect actual urgency. Most items are "medium". Only use "high" if someone needs to act immediately. Use "low" for background context.
-- Write plain, factual summaries. No hype.
-- Only include things you are confident are accurate.
+- Only include things you are confident are factually accurate
+- Do NOT invent specific dates — use "early 2025", "2024", or "ongoing"
+- Priority: "high" only if someone needs to act now. Most are "medium". "low" for background info
+- Write plainly. No hype. Two factual sentences per item.
 
-Return a JSON array. Each object:
-- "title": factual, neutral headline
-- "link": "https://www.uscis.gov/newsroom"
-- "published": "2024", "2025", or "ongoing" only
-- "plain_summary": 2 sentences — what the situation is and who it affects
-- "priority": "high" | "medium" | "low" — be conservative
-- "affects": specific group (e.g. "H-1B applicants", "spouse visa petitioners")"""
+Return a JSON array of up to 8 items. Each object:
+- "title": factual headline (not sensational)
+- "link": most relevant official URL (whitehouse.gov, uscis.gov, dhs.gov, state.gov, or federalregister.gov)
+- "published": approximate period only ("early 2025", "2024", "ongoing")
+- "plain_summary": 2 plain sentences — what changed and who it affects
+- "priority": "high" | "medium" | "low"
+- "affects": specific group affected
+- "source": agency name (e.g. "White House", "USCIS", "DHS", "State Department")"""
                 enriched = generate(fallback_prompt)
             source_note = f"Based on USCIS.gov policy updates — {datetime.now().strftime('%B %d, %Y')}"
 
@@ -318,9 +327,11 @@ Return a JSON array. Each object:
                     priority_html = f'<span class="priority-{p}">{p} priority</span>'
                     pub = item.get("published", "")[:16] if item.get("published") else ""
                     link = item.get("link", "https://www.uscis.gov/newsroom")
+                    source_tag = item.get("source", "")
+                    source_html = f'&nbsp;·&nbsp; <span style="color:#9ca3af; font-size:0.8rem;">{source_tag}</span>' if source_tag else ""
                     st.markdown(f"""
                     <div class="news-item">
-                        <div class="news-meta">{pub} &nbsp;·&nbsp; {priority_html} &nbsp;·&nbsp; {item.get("affects","")}</div>
+                        <div class="news-meta">{pub} &nbsp;·&nbsp; {priority_html}{source_html} &nbsp;·&nbsp; {item.get("affects","")}</div>
                         <div class="news-title"><a href="{link}" target="_blank">{item.get("title","")}</a></div>
                         <div class="news-context">{item.get("plain_summary","")}</div>
                     </div>
