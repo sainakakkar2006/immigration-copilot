@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-24T21:55:20.976205+00:00",
-  "count": 6,
+  "fetched_at": "2026-05-24T22:08:55.249121+00:00",
+  "count": 1,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -9,41 +9,6 @@
     "Federal Register"
   ],
   "items": [
-    {
-      "title": "2026 FIFA World Cup Social Media Toolkit",
-      "link": "https://www.dhs.gov/know2protect/publication/2026-fifa-world-cup-social-media-toolkit",
-      "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">2026 FIFA World Cup Social Media Toolkit</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span>christina.mcfadden</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-05-21T14:12:38-04:00\" title=\"Thursday, May 21, 2026 - 14:12\">Thu, 05/21/2026 - 14:12</time>\n</span>\n  <div class=\"layout layout--onecol\">\n    <div class=\"layout__region layout__region--content\">\n      \n\n  <div class=\"field field--nam",
-      "published": "Thu, 21 May 2026 18:12:38 +0000",
-      "source": "DHS"
-    },
-    {
-      "title": "2026 FIFA World Cup",
-      "link": "https://www.dhs.gov/know2protect/2026-fifa-world-cup",
-      "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">2026 FIFA World Cup</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span>christina.mcfadden</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-05-19T13:29:17-04:00\" title=\"Tuesday, May 19, 2026 - 13:29\">Tue, 05/19/2026 - 13:29</time>\n</span>\n  <div class=\"layout layout--onecol\">\n    <div class=\"layout__region layout__region--content\">\n      \n            <div class=\"field field--name-body field-",
-      "published": "Tue, 19 May 2026 17:29:17 +0000",
-      "source": "DHS"
-    },
-    {
-      "title": "Irene Armendariz-Jackson",
-      "link": "https://www.dhs.gov/person/irene-armendariz-jackson",
-      "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">Irene Armendariz-Jackson</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span>felicia.brown</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-05-19T10:11:29-04:00\" title=\"Tuesday, May 19, 2026 - 10:11\">Tue, 05/19/2026 - 10:11</time>\n</span>\n  <div class=\"layout layout--onecol\">\n    <div class=\"layout__region layout__region--content\">\n      <h2 class=\"field field--name-field-profile-job-title f",
-      "published": "Tue, 19 May 2026 14:11:29 +0000",
-      "source": "DHS"
-    },
-    {
-      "title": "Alexander Jacobs",
-      "link": "https://www.dhs.gov/person/alexander-jacobs",
-      "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">Alexander Jacobs</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span>felicia.brown</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-05-19T10:02:23-04:00\" title=\"Tuesday, May 19, 2026 - 10:02\">Tue, 05/19/2026 - 10:02</time>\n</span>\n  <div class=\"layout layout--onecol\">\n    <div class=\"layout__region layout__region--content\">\n      <h2 class=\"field field--name-field-profile-job-title field--ty",
-      "published": "Tue, 19 May 2026 14:02:23 +0000",
-      "source": "DHS"
-    },
-    {
-      "title": "Build T.R.U.S.T.: How2Be a Trusted Adult",
-      "link": "https://www.dhs.gov/know2protect/publication/build-trust-how2be-trusted-adult",
-      "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">Build T.R.U.S.T.: How2Be a Trusted Adult</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span>christina.mcfadden</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-05-19T09:52:20-04:00\" title=\"Tuesday, May 19, 2026 - 09:52\">Tue, 05/19/2026 - 09:52</time>\n</span>\n  <div class=\"layout layout--onecol\">\n    <div class=\"layout__region layout__region--content\">\n      \n\n  <div class=\"field field--name",
-      "published": "Tue, 19 May 2026 13:52:20 +0000",
-      "source": "DHS"
-    },
     {
       "title": "Mission Critical Push-to-Talk Systems",
       "link": "https://www.dhs.gov/science-and-technology/saver/mission-critical-push-talk-systems",
