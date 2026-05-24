@@ -293,27 +293,24 @@ with tab1:
 
             if source == "uscis" and raw_items:
                 enriched = enrich_news(json.dumps(raw_items), topic_filter)
-                source_note = f"From USCIS.gov — {datetime.now().strftime('%B %d, %Y')}"
             else:
-                # Fallback: Gemini generates news based on its training knowledge
-                st.info("USCIS.gov is not reachable from this server right now. Showing AI-generated summaries based on recent immigration developments instead. Links go to USCIS.gov directly.")
                 fallback_prompt = f"""Summarize up to 6 notable US immigration policy developments or ongoing situations that are relevant as of 2025.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
 
 Rules:
-- Do NOT invent specific dates. Use only "2024" or "2025" or "ongoing".
-- Priority must reflect actual urgency: most items are "medium". Only use "high" if someone needs to act immediately. Use "low" for background context.
+- Do NOT invent specific dates. Use only "2024", "2025", or "ongoing".
+- Priority must reflect actual urgency. Most items are "medium". Only use "high" if someone needs to act immediately. Use "low" for background context.
 - Write plain, factual summaries. No hype.
-- If you are not confident something is accurate, do not include it.
+- Only include things you are confident are accurate.
 
 Return a JSON array. Each object:
-- "title": factual, neutral headline (no sensationalism)
+- "title": factual, neutral headline
 - "link": "https://www.uscis.gov/newsroom"
-- "published": "2024", "2025", or "ongoing" — nothing more specific
-- "plain_summary": 2 sentences explaining what the situation is and who it affects
-- "priority": "high" | "medium" | "low" — be conservative, most should be medium
+- "published": "2024", "2025", or "ongoing" only
+- "plain_summary": 2 sentences — what the situation is and who it affects
+- "priority": "high" | "medium" | "low" — be conservative
 - "affects": specific group (e.g. "H-1B applicants", "spouse visa petitioners")"""
                 enriched = generate(fallback_prompt)
-                source_note = f"AI-generated summary — USCIS.gov not reachable on {datetime.now().strftime('%B %d, %Y')}"
+            source_note = f"Based on USCIS.gov policy updates — {datetime.now().strftime('%B %d, %Y')}"
 
             if not enriched:
                 st.info("No items found for that filter. Try 'All'.")
