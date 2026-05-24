@@ -121,16 +121,17 @@ p { color: #374151; line-height: 1.7; }
     width: 20px;
 }
 .stButton > button {
-    background: #1d4ed8 !important;
-    color: white !important;
+    background: #111827 !important;
+    color: #ffffff !important;
     border: none !important;
     border-radius: 6px !important;
-    font-weight: 600 !important;
-    padding: 0.55rem 1.4rem !important;
-    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1.3rem !important;
+    font-size: 0.9rem !important;
 }
 .stButton > button:hover {
-    background: #1e40af !important;
+    background: #374151 !important;
+    color: #ffffff !important;
 }
 a { color: #1d4ed8; }
 </style>
@@ -158,19 +159,31 @@ def generate(prompt):
 # Fetch real USCIS news from their RSS feed, cached 48 hours
 @st.cache_data(ttl=172800)
 def fetch_uscis_news():
-    try:
-        feed = feedparser.parse("https://www.uscis.gov/rss/uscis-news.xml")
-        items = []
-        for entry in feed.entries[:8]:
-            items.append({
-                "title": entry.get("title", ""),
-                "link": entry.get("link", ""),
-                "summary": entry.get("summary", "")[:400],
-                "published": entry.get("published", "")
-            })
-        return items
-    except Exception as e:
-        return []
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+    urls = [
+        "https://www.uscis.gov/rss/uscis-news.xml",
+        "https://www.uscis.gov/rss/uscis-alerts.xml",
+    ]
+    for url in urls:
+        try:
+            resp = requests.get(url, headers=headers, timeout=12)
+            if resp.status_code == 200:
+                feed = feedparser.parse(resp.content)
+                if feed.entries:
+                    items = []
+                    for entry in feed.entries[:8]:
+                        items.append({
+                            "title": entry.get("title", ""),
+                            "link": entry.get("link", ""),
+                            "summary": entry.get("summary", "")[:400],
+                            "published": entry.get("published", "")
+                        })
+                    return {"source": "uscis", "items": items}
+        except Exception:
+            continue
+    return {"source": "unavailable", "items": []}
 
 # Fetch Federal Register immigration rules, cached 48 hours
 @st.cache_data(ttl=172800)
@@ -201,7 +214,7 @@ def fetch_federal_register():
 # Use Gemini to add plain-English context to real news items, cached 48 hours
 @st.cache_data(ttl=172800)
 def enrich_news(news_items_json, topic_filter):
-    items = json.loads(news_items_json)
+    items = json.loads(news_items_json) if isinstance(news_items_json, str) else news_items_json
     if not items:
         return []
 
@@ -267,49 +280,63 @@ with tab1:
 
     if load:
         with st.spinner("Fetching from USCIS.gov and the Federal Register..."):
-            raw_items = fetch_uscis_news()
-            if not raw_items:
-                st.warning("Could not reach USCIS.gov right now. Try again in a few minutes.")
-            else:
-                enriched = enrich_news(json.dumps(raw_items), topic_filter)
-                if not enriched:
-                    st.info("No recent items match that filter. Try 'All'.")
-                else:
-                    st.markdown(
-                        f"<p style='color:#9ca3af; font-size:0.82rem; margin-bottom:0.5rem;'>"
-                        f"{len(enriched)} items from USCIS.gov — last fetched {datetime.now().strftime('%B %d, %Y')}"
-                        f"</p>",
-                        unsafe_allow_html=True
-                    )
-                    for item in enriched:
-                        p = item.get("priority", "low")
-                        priority_html = f'<span class="priority-{p}">{p} priority</span>'
-                        pub = item.get("published", "")[:16] if item.get("published") else ""
-                        link = item.get("link", "#")
-                        st.markdown(f"""
-                        <div class="news-item">
-                            <div class="news-meta">{pub} &nbsp;·&nbsp; {priority_html} &nbsp;·&nbsp; {item.get("affects","")}</div>
-                            <div class="news-title"><a href="{link}" target="_blank">{item.get("title","")}</a></div>
-                            <div class="news-context">{item.get("plain_summary","")}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
+            result = fetch_uscis_news()
+            raw_items = result.get("items", [])
+            source = result.get("source", "unavailable")
 
-                # Federal Register
-                st.markdown("---")
+            if source == "uscis" and raw_items:
+                enriched = enrich_news(json.dumps(raw_items), topic_filter)
+                source_note = f"From USCIS.gov — {datetime.now().strftime('%B %d, %Y')}"
+            else:
+                # Fallback: Gemini generates news based on its training knowledge
+                st.info("USCIS.gov is not reachable from this server right now. Showing AI-generated summaries based on recent immigration developments instead. Links go to USCIS.gov directly.")
+                fallback_prompt = f"""List the 6 most significant US immigration developments from 2024-2025 that people should know about.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
+
+Return a JSON array. Each object:
+- "title": factual headline
+- "link": "https://www.uscis.gov/newsroom"
+- "published": approximate date (e.g. "March 2025")
+- "plain_summary": 2 plain sentences explaining what happened and who it affects
+- "priority": "high" | "medium" | "low"
+- "affects": who is most affected"""
+                enriched = generate(fallback_prompt)
+                source_note = f"AI-generated summary — USCIS.gov not reachable on {datetime.now().strftime('%B %d, %Y')}"
+
+            if not enriched:
+                st.info("No items found for that filter. Try 'All'.")
+            else:
                 st.markdown(
-                    "<div class='section-label'>Recent regulatory activity</div>",
+                    f"<p style='color:#9ca3af; font-size:0.82rem; margin-bottom:1rem;'>{source_note}</p>",
                     unsafe_allow_html=True
                 )
-                fr_items = fetch_federal_register()
-                if fr_items:
-                    for doc in fr_items:
-                        st.markdown(f"""
-                        <div class="news-item">
-                            <div class="news-meta">{doc.get("date","")} &nbsp;·&nbsp; {doc.get("type","")}</div>
-                            <div class="news-title"><a href="{doc.get('link','#')}" target="_blank">{doc.get("title","")}</a></div>
-                            {"<div class='news-context'>" + doc.get("abstract","") + "</div>" if doc.get("abstract") else ""}
-                        </div>
-                        """, unsafe_allow_html=True)
+                for item in enriched:
+                    p = item.get("priority", "low")
+                    priority_html = f'<span class="priority-{p}">{p} priority</span>'
+                    pub = item.get("published", "")[:16] if item.get("published") else ""
+                    link = item.get("link", "https://www.uscis.gov/newsroom")
+                    st.markdown(f"""
+                    <div class="news-item">
+                        <div class="news-meta">{pub} &nbsp;·&nbsp; {priority_html} &nbsp;·&nbsp; {item.get("affects","")}</div>
+                        <div class="news-title"><a href="{link}" target="_blank">{item.get("title","")}</a></div>
+                        <div class="news-context">{item.get("plain_summary","")}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+            # Federal Register always works (public API)
+            st.markdown("---")
+            st.markdown("<div class='section-label'>Recent regulatory activity — Federal Register</div>", unsafe_allow_html=True)
+            fr_items = fetch_federal_register()
+            if fr_items:
+                for doc in fr_items:
+                    st.markdown(f"""
+                    <div class="news-item">
+                        <div class="news-meta">{doc.get("date","")} &nbsp;·&nbsp; {doc.get("type","")}</div>
+                        <div class="news-title"><a href="{doc.get('link','#')}" target="_blank">{doc.get("title","")}</a></div>
+                        {"<div class='news-context'>" + doc.get("abstract","") + "</div>" if doc.get("abstract") else ""}
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.markdown("<p style='color:#9ca3af; font-size:0.88rem;'>Federal Register data unavailable right now.</p>", unsafe_allow_html=True)
     else:
         st.markdown(
             "<div class='info-box'>"
