@@ -1,5 +1,6 @@
 import streamlit as st
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import json
 import os
 import io
@@ -59,11 +60,21 @@ st.markdown("""
 # ── API setup ──────────────────────────────────────────────────────────────────
 api_key = st.secrets.get("GEMINI_API_KEY", os.environ.get("GEMINI_API_KEY", ""))
 if not api_key:
-    st.error("⚠️ GEMINI_API_KEY not found. Add it to Streamlit secrets or as an environment variable.")
+    st.error("⚠️ GEMINI_API_KEY not found. Add it to Streamlit secrets.")
     st.stop()
 
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-2.0-flash")
+client = genai.Client(api_key=api_key)
+
+def generate(prompt):
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.2,
+            response_mime_type="application/json"
+        )
+    )
+    return json.loads(response.text)
 
 # ── Header ─────────────────────────────────────────────────────────────────────
 st.markdown("# 🗽 Immigration Co-Pilot")
@@ -100,22 +111,14 @@ Return ONLY a JSON array with exactly 5 objects, each with:
 - "headline": clear, informative headline (max 15 words)
 - "category": one of: H-1B | F-1/OPT | Family Immigration | Employment Green Card | DACA | Policy/Law | Processing Times
 - "summary": 2-3 sentences — what happened and why it matters
-- "impact": who is most affected (be specific, e.g. "Indian-born H-1B holders waiting for green cards")
+- "impact": who is most affected (be specific)
 - "action": one concrete thing affected people should do
 - "urgency": "High" | "Medium" | "Low"
 
-Be factual and accurate. Cover real policy changes, court decisions, processing time shifts, and executive actions."""
+Be factual and accurate."""
 
             try:
-                resp = model.generate_content(
-                    prompt,
-                    generation_config=genai.types.GenerationConfig(
-                        temperature=0.2,
-                        response_mime_type="application/json"
-                    )
-                )
-                items = json.loads(resp.text)
-
+                items = generate(prompt)
                 urgency_colors = {"High": "#dc3545", "Medium": "#fd7e14", "Low": "#28a745"}
                 urgency_icons  = {"High": "🔴", "Medium": "🟡", "Low": "🟢"}
 
@@ -180,12 +183,8 @@ with tab2:
 
     with col_r:
         st.write("**Upload a document (optional)**")
-        st.caption("Upload your I-20, visa stamp, EAD card, I-797 approval notice, or any immigration document for a more personalised analysis.")
-        uploaded = st.file_uploader(
-            "Choose file",
-            type=["pdf", "txt"],
-            label_visibility="collapsed"
-        )
+        st.caption("Upload your I-20, visa stamp, EAD card, or any immigration document for a more personalised analysis.")
+        uploaded = st.file_uploader("Choose file", type=["pdf", "txt"], label_visibility="collapsed")
         if uploaded:
             st.success(f"✅ {uploaded.name} uploaded")
 
@@ -201,12 +200,12 @@ with tab2:
                     text = " ".join(p.extract_text() or "" for p in reader.pages)
                     doc_context = f"\n\nExtracted text from uploaded document:\n{text[:3000]}"
                 except Exception:
-                    doc_context = f"\nUser uploaded a document: {uploaded.name}"
-            elif uploaded.type == "text/plain":
+                    doc_context = f"\nUser uploaded: {uploaded.name}"
+            else:
                 doc_context = f"\n\nContents of uploaded document:\n{uploaded.read().decode('utf-8', errors='ignore')[:3000]}"
 
         with st.spinner("Analysing your situation..."):
-            prompt = f"""You are an expert US immigration advisor. Analyse this person's immigration situation and explain clearly how current US immigration policies, news, and trends affect them personally.
+            prompt = f"""You are an expert US immigration advisor. Analyse this person's situation and explain how current US immigration policies and trends affect them personally.
 
 Their situation:
 - Visa / status: {visa_status}
@@ -214,30 +213,21 @@ Their situation:
 - Main concern: {concern or "General guidance"}
 {doc_context}
 
-Return ONLY a JSON object with this exact structure:
+Return ONLY a JSON object:
 {{
-  "situation_summary": "2-3 sentence plain-English summary of their current position",
+  "situation_summary": "2-3 sentence plain-English summary",
   "key_impacts": [
-    {{"title": "short title", "description": "detailed explanation of how a current policy/news item affects them", "urgency": "High|Medium|Low"}}
+    {{"title": "short title", "description": "detailed explanation", "urgency": "High|Medium|Low"}}
   ],
-  "immediate_actions": ["specific action 1", "action 2", "action 3"],
+  "immediate_actions": ["action 1", "action 2", "action 3"],
   "things_to_watch": ["thing 1", "thing 2"],
-  "good_news": "any positive aspects, opportunities, or reassurances",
-  "key_dates": "important deadlines or dates they should be aware of",
-  "helpful_resources": ["USCIS form or resource 1", "resource 2"]
-}}
-
-Be specific, factual, and genuinely helpful. Consider their country of birth for priority date backlogs if relevant."""
+  "good_news": "positive aspects or reassurances",
+  "key_dates": "important deadlines they should know",
+  "helpful_resources": ["resource 1", "resource 2"]
+}}"""
 
             try:
-                resp = model.generate_content(
-                    prompt,
-                    generation_config=genai.types.GenerationConfig(
-                        temperature=0.2,
-                        response_mime_type="application/json"
-                    )
-                )
-                data = json.loads(resp.text)
+                data = generate(prompt)
 
                 st.success("✅ Analysis complete")
                 st.info(data.get("situation_summary", ""))
@@ -301,36 +291,17 @@ with tab3:
                     "Outside the US → Consular Processing"
                 ]
             )
-            country_of_birth = st.text_input(
-                "Applicant's country of birth *",
-                placeholder="e.g. India, Mexico, Philippines"
-            )
+            country_of_birth = st.text_input("Applicant's country of birth *", placeholder="e.g. India, Mexico, Philippines")
 
         with c2:
             marriage_duration = 0.0
             if "Spouse" in relationship:
-                marriage_duration = st.number_input(
-                    "How long have you been married? (years)",
-                    min_value=0.0, max_value=60.0, value=1.0, step=0.5
-                )
-            petitioner_income = st.number_input(
-                "Petitioner's annual income (USD) *",
-                min_value=0, max_value=1000000, value=55000, step=1000
-            )
-            household_size = st.number_input(
-                "Total household size (including applicant) *",
-                min_value=1, max_value=20, value=2
-            )
-            prior_violations = st.checkbox(
-                "Has the applicant had any prior immigration violations, overstays, or deportation orders?"
-            )
+                marriage_duration = st.number_input("How long have you been married? (years)", min_value=0.0, max_value=60.0, value=1.0, step=0.5)
+            petitioner_income = st.number_input("Petitioner's annual income (USD) *", min_value=0, max_value=1000000, value=55000, step=1000)
+            household_size = st.number_input("Total household size (including applicant) *", min_value=1, max_value=20, value=2)
+            prior_violations = st.checkbox("Has the applicant had any prior immigration violations, overstays, or deportation orders?")
 
-        extra = st.text_area(
-            "Anything else we should know? (optional)",
-            placeholder="e.g. Previous visa denials, pending criminal matters, prior US entries, medical conditions...",
-            height=80
-        )
-
+        extra = st.text_area("Anything else we should know? (optional)", placeholder="e.g. Previous visa denials, criminal history, medical conditions...", height=80)
         submit_btn = st.form_submit_button("📋 Generate My Checklist", use_container_width=True, type="primary")
 
     if submit_btn:
@@ -338,68 +309,60 @@ with tab3:
             st.error("Please enter the applicant's country of birth.")
         else:
             with st.spinner("Building your personalised checklist..."):
-                prompt = f"""You are a licensed US immigration attorney. Generate a comprehensive, personalised green card application checklist for this specific case.
+                prompt = f"""You are a licensed US immigration attorney. Generate a comprehensive, personalised green card checklist.
 
 Case details:
-- Relationship / petition type: {relationship}
+- Relationship: {relationship}
 - Applicant location: {applicant_location}
-- Applicant country of birth: {country_of_birth}
+- Country of birth: {country_of_birth}
 - Marriage duration: {marriage_duration} years
-- Petitioner annual income: ${petitioner_income:,}
+- Petitioner income: ${petitioner_income:,}
 - Household size: {household_size}
 - Prior violations: {prior_violations}
-- Additional notes: {extra or "None"}
+- Notes: {extra or "None"}
 
-Return ONLY a JSON object with this structure:
+Return ONLY a JSON object:
 {{
   "forms_needed": [
-    {{"form": "I-130", "name": "Petition for Alien Relative", "fee": "$675", "who_files": "Petitioner (US Citizen or LPR)"}}
+    {{"form": "I-130", "name": "Petition for Alien Relative", "fee": "$675", "who_files": "Petitioner"}}
   ],
   "evidence_checklist": [
-    {{"category": "Proof of Relationship", "item": "Marriage certificate", "description": "Original or certified copy issued by the registrar", "how_to_get": "Vital records office in the country/state of marriage", "critical": true}}
+    {{"category": "Proof of Relationship", "item": "Marriage certificate", "description": "Original or certified copy", "how_to_get": "Vital records office", "critical": true}}
   ],
-  "red_flags": ["Specific warnings relevant to their situation"],
-  "timeline_estimate": "Realistic end-to-end timeline",
-  "income_analysis": "Whether petitioner meets 125% Federal Poverty Guideline and what to do if they don't",
-  "cover_letter_draft": "A complete, professional cover letter ready to include in the filing package",
-  "next_steps": ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"]
+  "red_flags": ["warning 1", "warning 2"],
+  "timeline_estimate": "realistic end-to-end timeline",
+  "income_analysis": "whether petitioner meets 125% poverty guideline",
+  "cover_letter_draft": "complete professional cover letter ready to submit",
+  "next_steps": ["step 1", "step 2", "step 3", "step 4", "step 5"]
 }}
 
-Include ALL required forms AND common supporting documents. Flag if marriage under 2 years triggers a conditional green card. Note priority date backlogs for the applicant's country if relevant. Be thorough and accurate."""
+Be thorough — include all required forms and commonly requested supporting documents."""
 
                 try:
-                    resp = model.generate_content(
-                        prompt,
-                        generation_config=genai.types.GenerationConfig(
-                            temperature=0.2,
-                            response_mime_type="application/json"
-                        )
-                    )
-                    cl = json.loads(resp.text)
+                    cl = generate(prompt)
 
                     st.success("✅ Your personalised checklist is ready!")
 
-                    # Red flags
                     flags = cl.get("red_flags", [])
                     if flags:
                         st.subheader("⚠️ Important flags in your case")
                         for f in flags:
                             st.markdown(f'<div class="flag-box">⚠️ {f}</div>', unsafe_allow_html=True)
 
-                    # Forms
                     st.subheader("📄 Forms you need to file")
-                    form_cols = st.columns(min(len(cl.get("forms_needed", [])), 4))
-                    for i, frm in enumerate(cl.get("forms_needed", [])):
-                        with form_cols[i % len(form_cols)]:
-                            st.markdown(f"""
-                            <div class="form-card">
-                                <h3 style="color:#1a73e8; margin:0;">{frm.get('form','')}</h3>
-                                <p style="font-size:0.82rem; margin:0.3rem 0;">{frm.get('name','')}</p>
-                                <p style="color:#666; font-size:0.78rem;">Fee: {frm.get('fee','See USCIS.gov')}<br>Filed by: {frm.get('who_files','')}</p>
-                            </div>
-                            """, unsafe_allow_html=True)
+                    form_list = cl.get("forms_needed", [])
+                    if form_list:
+                        form_cols = st.columns(min(len(form_list), 4))
+                        for i, frm in enumerate(form_list):
+                            with form_cols[i % len(form_cols)]:
+                                st.markdown(f"""
+                                <div class="form-card">
+                                    <h3 style="color:#1a73e8; margin:0;">{frm.get('form','')}</h3>
+                                    <p style="font-size:0.82rem; margin:0.3rem 0;">{frm.get('name','')}</p>
+                                    <p style="color:#666; font-size:0.78rem;">Fee: {frm.get('fee','See USCIS.gov')}<br>Filed by: {frm.get('who_files','')}</p>
+                                </div>
+                                """, unsafe_allow_html=True)
 
-                    # Timeline + income
                     t1, t2 = st.columns(2)
                     with t1:
                         st.subheader("⏱️ Timeline estimate")
@@ -408,7 +371,6 @@ Include ALL required forms AND common supporting documents. Flag if marriage und
                         st.subheader("💰 Income requirement")
                         st.write(cl.get("income_analysis", ""))
 
-                    # Evidence checklist grouped by category
                     st.subheader("📋 Evidence checklist")
                     categories: dict = {}
                     for item in cl.get("evidence_checklist", []):
@@ -425,18 +387,16 @@ Include ALL required forms AND common supporting documents. Flag if marriage und
                                 st.markdown(f"&nbsp;&nbsp;&nbsp;*How to get it: {item.get('how_to_get','')}*")
                                 st.divider()
 
-                    # Cover letter
                     st.subheader("✉️ Cover letter draft")
                     st.caption("Copy this, add your address, and include it at the top of your filing package.")
                     st.text_area("", value=cl.get("cover_letter_draft", ""), height=320, label_visibility="collapsed")
 
-                    # Next steps
                     st.subheader("👣 Your next steps")
                     for i, step in enumerate(cl.get("next_steps", []), 1):
                         st.markdown(f"**{i}.** {step}")
 
                     st.divider()
-                    st.caption("⚠️ This tool provides general guidance only and is not legal advice. For complex or high-stakes cases, consult a licensed immigration attorney.")
+                    st.caption("⚠️ This tool provides general guidance only and is not legal advice. For complex cases, consult a licensed immigration attorney.")
 
                 except Exception as e:
                     st.error(f"Failed to generate checklist: {e}")
