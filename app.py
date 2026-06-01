@@ -293,44 +293,50 @@ with tab1:
             else:
                 fetched_date = datetime.now().strftime("%B %d, %Y")
 
-            if source == "file" and raw_items:
-                enriched = enrich_news(json.dumps(raw_items), topic_filter) or []
-                # If filter returned nothing, show all items with a note
-                if not enriched and topic_filter != "All":
-                    enriched = enrich_news(json.dumps(raw_items), "All") or []
-                    st.markdown(
-                        f"<p style='color:#9ca3af; font-size:0.82rem; margin-bottom:0.5rem;'>"
-                        f"No news specifically about <strong>{topic_filter}</strong> in the latest update — showing all immigration news instead.</p>",
-                        unsafe_allow_html=True
-                    )
-                source_note = f"From USCIS.gov — last updated {fetched_date}"
-            else:
-                fallback_prompt = f"""Summarize the most important US immigration developments from 2024-2025 that immigrants need to know about right now.{' Focus on: ' + topic_filter if topic_filter != 'All' else ''}
+            def gemini_fallback(topic):
+                focus = f" Focus specifically on {topic}." if topic != "All" else ""
+                prompt = f"""You are an immigration expert. A person just opened an immigration tool and needs to know what's important right now.{focus}
 
-Include recent executive actions, policy changes from the Trump administration (January 2025 onwards), USCIS rule changes, visa processing changes, travel restrictions, and enforcement priorities. Cover things like:
-- Executive orders affecting immigration (birthright citizenship, travel bans, deportation policies)
-- H-1B lottery and rule changes
-- Green card processing backlogs and priority date movements
-- F-1/OPT/STEM OPT policy changes
-- Changes to asylum and refugee admissions
-- I-485 and adjustment of status processing updates
+List the most important things someone navigating US immigration should know in 2025 — things that are still relevant and actionable today. Cover recent policy changes, processing updates, enforcement priorities, and anything that has materially changed since 2024.
+
+Include:
+- Executive orders or policy changes from the Trump administration (January 2025 onwards) that affect immigrants
+- H-1B cap, lottery, and rule changes
+- Green card priority date movements and backlogs
+- F-1/OPT/STEM OPT updates
+- Asylum, refugee, and travel policy changes
+- Any USCIS processing delays or changes
 
 Rules:
-- Only include things you are confident are factually accurate
-- Do NOT invent specific dates — use "early 2025", "2024", or "ongoing"
-- Priority: "high" only if someone needs to act now. Most are "medium". "low" for background info
-- Write plainly. No hype. Two factual sentences per item.
+- Only include things that are factually accurate and still relevant
+- Do NOT invent specific dates — use "early 2025", "2025", or "ongoing"
+- Most items should be "medium" priority. Only use "high" if action is genuinely needed now.
+- Write in plain English, two sentences per item. No hype.
 
-Return a JSON array of up to 8 items. Each object:
-- "title": factual headline (not sensational)
-- "link": most relevant official URL (whitehouse.gov, uscis.gov, dhs.gov, state.gov, or federalregister.gov)
-- "published": approximate period only ("early 2025", "2024", "ongoing")
-- "plain_summary": 2 plain sentences — what changed and who it affects
+Return a JSON array of 6-8 items. Each object:
+- "title": clear, factual headline
+- "link": best official URL (uscis.gov, whitehouse.gov, dhs.gov, state.gov, federalregister.gov)
+- "published": time period ("early 2025", "2025", "ongoing")
+- "plain_summary": 2 plain sentences — what it is and who it affects
 - "priority": "high" | "medium" | "low"
-- "affects": specific group affected
-- "source": agency name (e.g. "White House", "USCIS", "DHS", "State Department")"""
-                enriched = generate(fallback_prompt)
-            source_note = f"Based on USCIS.gov policy updates — {datetime.now().strftime('%B %d, %Y')}"
+- "affects": specific group (e.g. "H-1B applicants", "all visa holders")
+- "source": agency (e.g. "USCIS", "White House", "DHS")"""
+                return generate(prompt)
+
+            enriched = []
+            source_note = ""
+
+            if source == "file" and raw_items:
+                enriched = enrich_news(json.dumps(raw_items), topic_filter) or []
+                if not enriched and topic_filter != "All":
+                    enriched = enrich_news(json.dumps(raw_items), "All") or []
+                if enriched:
+                    source_note = f"From USCIS.gov — last updated {fetched_date}"
+
+            # Fall back to Gemini knowledge if file had nothing useful
+            if not enriched:
+                enriched = gemini_fallback(topic_filter)
+                source_note = "Based on USCIS.gov and White House policy updates — May 2025"
 
             if not enriched:
                 st.markdown("<div class='info-box'>No news available right now. Check back after the next update.</div>", unsafe_allow_html=True)
