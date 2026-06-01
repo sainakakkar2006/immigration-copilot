@@ -382,14 +382,7 @@ Return a JSON array of 5-7 items. Each object:
             else:
                 st.markdown("<p style='color:#9ca3af; font-size:0.88rem;'>Federal Register data unavailable right now.</p>", unsafe_allow_html=True)
     else:
-        st.markdown(
-            "<div class='info-box'>"
-            "This tab pulls directly from <strong>USCIS.gov</strong>'s news feed and the "
-            "<strong>Federal Register</strong> — the official source for US regulatory changes. "
-            "Results are cached for 48 hours so we're not hitting government servers constantly."
-            "</div>",
-            unsafe_allow_html=True
-        )
+        pass
 
 
 # TAB 2 - YOUR SITUATION
