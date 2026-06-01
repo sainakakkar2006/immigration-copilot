@@ -261,12 +261,6 @@ tab1, tab2, tab3, tab4 = st.tabs(["News", "Your Situation", "Green Card Checklis
 # TAB 1 - NEWS
 with tab1:
     st.markdown("### What's happening in US immigration")
-    st.markdown(
-        "<p style='color:#6b7280; font-size:0.9rem; margin-bottom:1.5rem;'>"
-        "Updated from USCIS.gov and the Federal Register every 48 hours."
-        "</p>",
-        unsafe_allow_html=True
-    )
 
     topic_filter = st.selectbox(
         "Filter by topic",
