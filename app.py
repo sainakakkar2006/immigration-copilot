@@ -293,33 +293,39 @@ with tab1:
             else:
                 fetched_date = datetime.now().strftime("%B %d, %Y")
 
+            TOPIC_FOCUS = {
+                "H-1B": """Focus ONLY on H-1B visa topics: cap registration, lottery results, petition rules, RFE trends, employer sponsorship, H-1B to green card (EB-2/EB-3) pathways, and H-4 EAD. Do not include asylum, F-1, family green cards, or unrelated immigration topics.""",
+                "F-1 / Students": """Focus ONLY on F-1 student visa topics: OPT, STEM OPT, cap-gap, SEVIS, university enrollment rules, and CPT. Do not include H-1B, green cards, asylum, or unrelated topics.""",
+                "Family Green Cards": """Focus ONLY on family-based green card topics: I-130 petitions, priority dates for family categories, adjustment of status (I-485), consular processing, spousal visas, and immediate relative categories. Do not include employment visas, asylum, or unrelated topics.""",
+                "Employment Green Cards": """Focus ONLY on employment-based green card topics: EB-1, EB-2, EB-3, PERM labor certification, priority date movement, national interest waivers, and I-140 petitions. Do not include family green cards, work visas, or unrelated topics.""",
+            }
+
             def gemini_fallback(topic):
-                focus = f" Focus specifically on {topic}." if topic != "All" else ""
-                prompt = f"""You are an immigration expert. A person just opened an immigration tool and needs to know what's important right now.{focus}
+                if topic != "All":
+                    focus = TOPIC_FOCUS.get(topic, f"Focus specifically on {topic}.")
+                else:
+                    focus = "Cover H-1B, family green cards, employment green cards, F-1/OPT, asylum policy, and general USCIS processing updates."
 
-List the most important things someone navigating US immigration should know in 2025 — things that are still relevant and actionable today. Cover recent policy changes, processing updates, enforcement priorities, and anything that has materially changed since 2024.
+                prompt = f"""You are an immigration expert. Someone just opened an immigration tool and needs to know what's important right now.
 
-Include:
-- Executive orders or policy changes from the Trump administration (January 2025 onwards) that affect immigrants
-- H-1B cap, lottery, and rule changes
-- Green card priority date movements and backlogs
-- F-1/OPT/STEM OPT updates
-- Asylum, refugee, and travel policy changes
-- Any USCIS processing delays or changes
+{focus}
+
+List the most important things they should know in 2025 that are still relevant and actionable today.
 
 Rules:
-- Only include things that are factually accurate and still relevant
+- Only include things that are factually accurate and still relevant to this specific topic
+- Do NOT include topics outside the focus area above
 - Do NOT invent specific dates — use "early 2025", "2025", or "ongoing"
 - Most items should be "medium" priority. Only use "high" if action is genuinely needed now.
 - Write in plain English, two sentences per item. No hype.
 
-Return a JSON array of 6-8 items. Each object:
+Return a JSON array of 5-7 items. Each object:
 - "title": clear, factual headline
 - "link": best official URL (uscis.gov, whitehouse.gov, dhs.gov, state.gov, federalregister.gov)
 - "published": time period ("early 2025", "2025", "ongoing")
 - "plain_summary": 2 plain sentences — what it is and who it affects
 - "priority": "high" | "medium" | "low"
-- "affects": specific group (e.g. "H-1B applicants", "all visa holders")
+- "affects": specific group (e.g. "H-1B cap registrants", "F-1 OPT applicants")
 - "source": agency (e.g. "USCIS", "White House", "DHS")"""
                 return generate(prompt)
 
