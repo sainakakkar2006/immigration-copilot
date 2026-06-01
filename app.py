@@ -251,7 +251,7 @@ Return a JSON array. Each object:
 st.markdown("""
 <div class="site-header">
     <div class="site-title">Immigration Co-Pilot</div>
-    <div class="site-desc">Know exactly where you stand. Real government updates, explained in plain English, free.</div>
+    <div class="site-desc">Your immigration questions deserve real answers. We cut through the noise so you always know what's happening and what to do next.</div>
 </div>
 """, unsafe_allow_html=True)
 
