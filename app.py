@@ -206,38 +206,43 @@ def enrich_news(news_items_json, topic_filter):
     filtered = items
     if topic_filter != "All":
         topic_keywords = {
-            "H-1B": ["h-1b", "h1b", "specialty occupation", "work visa", "h1"],
-            "F-1 / Students": ["f-1", "f1", "student", "opt", "stem", "daca", "cap-gap"],
-            "Family Green Cards": ["family", "relative", "spouse", "i-130", "i-485", "adjustment", "immediate relative"],
-            "Employment Green Cards": ["employment", "eb-1", "eb-2", "eb-3", "perm", "priority date", "labor"],
+            "H-1B": ["h-1b", "h1b", "specialty occupation", "work visa", "h1", "employer", "petition", "cap", "lottery", "work authorization", "employment"],
+            "F-1 / Students": ["f-1", "f1", "student", "opt", "stem", "daca", "cap-gap", "university", "college", "sevis"],
+            "Family Green Cards": ["family", "relative", "spouse", "i-130", "i-485", "adjustment", "immediate relative", "petition", "green card"],
+            "Employment Green Cards": ["employment", "eb-1", "eb-2", "eb-3", "perm", "priority date", "labor", "green card", "permanent resident"],
         }
         keywords = topic_keywords.get(topic_filter, [])
         if keywords:
-            filtered = [i for i in items if any(k in (i.get("title","") + i.get("summary","")).lower() for k in keywords)]
-        # Do NOT fall back — if nothing matches the filter, return empty and show message in UI
+            specific = [i for i in items if any(k in (i.get("title","") + i.get("summary","")).lower() for k in keywords)]
+            # Use specific matches if any, otherwise show all immigration news
+            filtered = specific if specific else items
 
     topic_instruction = ""
     if topic_filter != "All":
-        topic_instruction = f'\n\nIMPORTANT: Only include items that are genuinely relevant to {topic_filter} visa holders or applicants. If an item is unrelated, omit it entirely from the output — do not include it with a low relevance note.'
+        topic_instruction = f'\n\nContext: the user selected "{topic_filter}". Prioritize items relevant to that group. For items that are general immigration policy (not specific to any visa type), include them — they likely affect everyone. Only skip items that are clearly DHS internal operations, staff bios, IT systems, or completely unrelated to immigration.'
 
     prompt = f"""You are an immigration news analyst. For each news item below, write a plain 2-sentence explanation of what it means for immigrants.
 
+Include an item if it relates to: visas, green cards, citizenship, immigration policy, border policy, executive orders affecting immigrants, work authorization, travel restrictions, or any government action that could affect someone living in or trying to come to the US. When in doubt, include it.
+
+Only skip items that are purely about DHS internal IT systems, staff bios, or topics with zero connection to immigrants (e.g. domestic disaster relief with no immigration angle).
+
 News items: {json.dumps(filtered[:8])}{topic_instruction}
 
-Rules for priority — be honest and conservative:
-- "high": only if someone needs to take action right now (e.g. a deadline is imminent, a rule just changed)
-- "medium": important to know, but no immediate action needed
-- "low": background context, long-term changes, or informational updates
-Most items should be "medium". Do not make everything high priority.
+Priority rules — be conservative:
+- "high": action needed now (imminent deadline, rule just took effect)
+- "medium": important to be aware of, no immediate action
+- "low": background context, long-term or unclear impact
+Default to "medium" for most items.
 
 Return a JSON array. Each object:
 - "title": same title as input
 - "link": same link as input
 - "published": same published date as input
 - "source": same source as input (e.g. "USCIS", "DHS", "White House")
-- "plain_summary": 2 sentences in plain English — what happened and who it affects
+- "plain_summary": 2 plain sentences — what happened and who it affects
 - "priority": "high" | "medium" | "low"
-- "affects": specific group affected (e.g. "H-1B applicants", "family green card petitioners")
+- "affects": specific group (e.g. "H-1B holders", "all visa applicants", "asylum seekers")
 """
     return generate(prompt)
 
