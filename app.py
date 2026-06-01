@@ -17,10 +17,10 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
 }
 .block-container {
     padding: 2.5rem 2rem 5rem;
@@ -251,7 +251,7 @@ Return a JSON array. Each object:
 st.markdown("""
 <div class="site-header">
     <div class="site-title">Immigration Co-Pilot</div>
-    <div class="site-desc">A free tool that pulls real information from government sources and explains what it means for your case.</div>
+    <div class="site-desc">US immigration is complicated. We make it less so — real updates, plain English, no lawyer required.</div>
 </div>
 """, unsafe_allow_html=True)
 
