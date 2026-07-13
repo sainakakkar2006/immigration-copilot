@@ -37,8 +37,8 @@ LANGUAGES = {
 # English base copy for the interface. Other languages are translated by
 # Gemini once per language and cached for everyone.
 T_EN = {
-    "tagline": "Your immigration questions deserve real answers. We cut through the noise so you always know what's happening and what to do next.",
-    "not_legal_advice": "Free information tool — not legal advice. For complicated cases, talk to a licensed attorney or find free help at immigrationlawhelp.org.",
+    "tagline": "Plain answers about US immigration. We read the letters, track the deadlines, and tell you what to do next, in your language. Built for families doing this without a lawyer.",
+    "not_legal_advice": "This is a free information tool, not legal advice. If your case is complicated, talk to a licensed attorney. Free and low-cost help exists at immigrationlawhelp.org.",
     "tab_decode": "Decode a Letter",
     "tab_news": "News",
     "tab_situation": "Your Situation",
@@ -48,10 +48,14 @@ T_EN = {
     "news_heading": "What's happening in US immigration",
     "news_filter_label": "Show news about",
     "news_loading": "Fetching the latest immigration news...",
-    "news_none": "No new headlines for this topic right now. The essentials below always apply.",
+    "news_none": "No new headlines for this topic right now. The essentials below still apply.",
     "news_latest_heading": "Latest news",
-    "news_essentials_heading": "The essentials — always true for this topic",
-    "essential_tag": "Essential",
+    "news_essentials_heading": "The essentials for this topic",
+    "essentials_reviewed": "These don't change with the news. Checked against USCIS.gov, last reviewed July 2026.",
+    "essential_tag": "always applies",
+    "footer_made": "Made by Saina and Arsh, two students whose families have been through this system.",
+    "footer_sources": "Everything is checked against USCIS.gov and the Federal Register. This is not a law firm.",
+    "footer_feedback": "Spotted a mistake? Tell us on GitHub and we'll fix it.",
     "news_fr_heading": "Recent regulatory activity — Federal Register",
     "news_fr_unavailable": "Federal Register data unavailable right now.",
     "priority": "priority",
@@ -60,7 +64,7 @@ T_EN = {
     "situation_status_label": "Your current status",
     "situation_country_label": "Country of birth",
     "situation_country_ph": "e.g. India, Mexico, China",
-    "situation_upload_label": "Upload a document (optional — I-20, EAD, visa, photo of a document)",
+    "situation_upload_label": "Upload a document (optional: I-20, EAD, visa, or a phone photo of one)",
     "situation_concern_label": "What's your situation?",
     "situation_concern_ph": "Tell us what you're trying to do or what you're worried about. For example: I'm on F-1 OPT expiring in 4 months, trying to get H-1B, lottery results came back negative.",
     "situation_button": "Analyse my situation",
@@ -74,7 +78,7 @@ T_EN = {
     "situation_note": "A note",
     "situation_resources": "Official resources",
     "decode_heading": "Got a letter from immigration? We'll explain it.",
-    "decode_intro": "Take a photo of any letter from USCIS, ICE, or the State Department — or upload the PDF. We'll tell you what it is, what it means, and exactly what to do before the deadline. Nothing you upload is stored.",
+    "decode_intro": "Take a photo of any letter from USCIS, ICE, or the State Department, or upload the PDF. We'll tell you what it is, what it means, and exactly what to do before the deadline. Nothing you upload is stored.",
     "decode_upload_label": "Photo or PDF of your letter",
     "decode_button": "Explain this letter",
     "decode_spinner": "Reading your letter...",
@@ -86,13 +90,13 @@ T_EN = {
     "decode_actions": "What to do now",
     "decode_details": "Details found in your letter",
     "decode_download_ics": "Add these deadlines to my calendar (.ics)",
-    "decode_get_help": "This looks serious. Find free legal help near you at immigrationlawhelp.org — many nonprofits handle exactly this kind of notice at no cost.",
+    "decode_get_help": "This looks serious. Find free legal help near you at immigrationlawhelp.org. Many nonprofits handle exactly this kind of notice at no cost.",
     "decode_no_file": "Upload a photo or PDF of your letter first.",
     "opt_heading": "OPT and STEM OPT deadline calculator",
-    "opt_intro": "These dates are computed directly from USCIS rules — nothing is estimated by AI. Enter your dates and get every deadline that applies to you, plus a calendar file so you never miss one.",
+    "opt_intro": "These dates are computed directly from USCIS rules. Nothing here is estimated by AI. Enter your dates and get every deadline that applies to you, plus a calendar file so you never miss one.",
     "opt_stage_label": "Where are you now?",
-    "opt_stage_student": "F-1 student — my program is ending",
-    "opt_stage_opt": "Already on OPT — thinking about STEM extension",
+    "opt_stage_student": "I'm finishing my F-1 program",
+    "opt_stage_opt": "I'm on OPT and thinking about the STEM extension",
     "opt_program_end": "Program end date (on your I-20)",
     "opt_end_date": "OPT end date (on your EAD card)",
     "opt_stem_eligible": "My degree is on the STEM Designated Degree Program List",
@@ -120,7 +124,7 @@ T_EN = {
     "checklist_timeline": "Timeline",
     "checklist_income": "Income requirement",
     "checklist_documents": "Document checklist",
-    "checklist_required_note": "Required items are marked. The rest are strongly recommended — USCIS often asks for them even if not strictly required.",
+    "checklist_required_note": "Required items are marked. The rest are strongly recommended. USCIS often asks for them even when they're not strictly required.",
     "checklist_cover": "Cover letter",
     "checklist_cover_note": "Place this as the first page of your package. Add your address at the top.",
     "checklist_cover_label": "Your cover letter",
@@ -301,15 +305,13 @@ li {{ line-height: 1.65; }}
     line-height: 1.6;
 }}
 
-/* Priority pills */
+/* Priority pills — sentence case reads calmer than shouting caps */
 .priority-high, .priority-medium, .priority-low {{
     display: inline-block;
     padding: 0.12rem 0.55rem;
     border-radius: 999px;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     vertical-align: 1px;
 }}
 .priority-high {{ background: #fef2f2; color: #b91c1c; }}
@@ -319,13 +321,24 @@ li {{ line-height: 1.65; }}
     display: inline-block;
     padding: 0.12rem 0.55rem;
     border-radius: 999px;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     background: var(--brand-tint);
     color: var(--brand);
     vertical-align: 1px;
+}}
+/* Essentials read as an editorial list, not another wall of cards */
+.plain-item {{
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--line);
+}}
+.site-footer {{
+    margin-top: 3.5rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.75;
 }}
 
 .section-label {{
@@ -725,7 +738,7 @@ Return a JSON array of 5-7 items. Each object:
 ESSENTIALS = {
     "All": [
         {"title": "Never miss a deadline on a USCIS notice",
-         "summary": "Deadlines on Requests for Evidence and other notices are strict — missing one usually means a denial. Read every letter the day it arrives and calendar the response date immediately.",
+         "summary": "Deadlines on Requests for Evidence and other notices are strict. Missing one usually means a denial. Read every letter the day it arrives and calendar the response date immediately.",
          "link": "https://www.uscis.gov/forms/filing-guidance/responding-to-a-request-for-evidence-or-notice-of-intent-to-deny"},
         {"title": "Report your address within 10 days of moving",
          "summary": "Almost everyone who is not a US citizen must file Form AR-11 within 10 days of changing address. It takes 5 minutes online and protects you from missing mail about your case.",
@@ -734,7 +747,7 @@ ESSENTIALS = {
          "summary": "You can track any receipt number free at the official USCIS case status page, and see how long your form type is taking at your service center. No one can speed this up for a fee.",
          "link": "https://egov.uscis.gov/casestatus/landing.do"},
         {"title": "Beware of notario fraud",
-         "summary": "Only licensed attorneys and DOJ-accredited representatives can give immigration legal advice. A 'notario' or consultant who promises results is a red flag — free or low-cost real help exists.",
+         "summary": "Only licensed attorneys and DOJ-accredited representatives can give immigration legal advice. A 'notario' or consultant who promises results is a red flag. Free or low-cost real help exists.",
          "link": "https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams"},
         {"title": "Keep copies of everything",
          "summary": "Photocopy or scan every page you send to the government and use tracked mail. Your own complete file is often the only record you can rely on later.",
@@ -742,12 +755,12 @@ ESSENTIALS = {
     ],
     "H-1B": [
         {"title": "The H-1B lottery registration happens every March",
-         "summary": "Your employer registers you electronically in early March for a job starting October 1. If you miss the window, you wait a full year — talk to your employer well before spring.",
+         "summary": "Your employer registers you electronically in early March for a job starting October 1. If you miss the window, you wait a full year, so talk to your employer well before spring.",
          "link": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations"},
         {"title": "You have a 60-day grace period if you lose your job",
          "summary": "After a layoff you get up to 60 days (or until your I-94 expires, whichever is shorter) to find a new sponsor, change status, or leave. A new employer can file a transfer petition during this window.",
          "link": "https://www.uscis.gov/working-in-the-united-states/information-for-employers-and-employees/options-for-nonimmigrant-workers-following-termination-of-employment"},
-        {"title": "H-1B is dual intent — you can pursue a green card",
+        {"title": "H-1B lets you pursue a green card",
          "summary": "Unlike many visas, being on H-1B while applying for permanent residence is fully allowed. Ask your employer about starting the PERM process early, because backlogs are long for some countries.",
          "link": "https://www.uscis.gov/working-in-the-united-states/permanent-workers"},
         {"title": "Your H-4 spouse may be able to work",
@@ -756,13 +769,13 @@ ESSENTIALS = {
     ],
     "F-1 / Students": [
         {"title": "Apply for OPT in the 90-day window before your program ends",
-         "summary": "USCIS can receive your OPT application up to 90 days before your program end date and no later than 60 days after. Applying early matters — approvals take months and you cannot work until approved.",
+         "summary": "USCIS can receive your OPT application up to 90 days before your program end date and no later than 60 days after. Applying early matters. Approvals take months and you cannot work until approved.",
          "link": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students"},
         {"title": "Watch your unemployment days on OPT",
-         "summary": "You get a maximum of 90 days without a job on regular OPT, and 150 total if you extend with STEM OPT. Going over can end your status — report every job to your school's international office.",
+         "summary": "You get a maximum of 90 days without a job on regular OPT, and 150 total if you extend with STEM OPT. Going over can end your status, so report every job to your school's international office.",
          "link": "https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-optional-practical-training-opt"},
         {"title": "Keep your SEVIS record accurate",
-         "summary": "Report address and employer changes to your Designated School Official within 10 days. A clean SEVIS record is what keeps your status alive — most preventable problems start here.",
+         "summary": "Report address and employer changes to your Designated School Official within 10 days. A clean SEVIS record is what keeps your status alive. Most preventable problems start here.",
          "link": "https://studyinthestates.dhs.gov/"},
         {"title": "On-campus work is capped at 20 hours a week during term",
          "summary": "Working more than 20 hours a week on campus during the semester is a status violation, even if your employer schedules it. Full time is allowed during official breaks.",
@@ -773,10 +786,10 @@ ESSENTIALS = {
     ],
     "Family Green Cards": [
         {"title": "Immediate relatives of US citizens have no waiting line",
-         "summary": "Spouses, parents, and unmarried children under 21 of US citizens are never subject to annual limits — the only wait is processing time. All other family categories wait for a priority date.",
+         "summary": "Spouses, parents, and unmarried children under 21 of US citizens are never subject to annual limits. The only wait is processing time. All other family categories wait for a priority date.",
          "link": "https://www.uscis.gov/family/family-of-us-citizens"},
         {"title": "Check the Visa Bulletin every month if you're in a preference category",
-         "summary": "The State Department publishes wait-line movement monthly. Your place in line is your priority date — the date the I-130 was filed. Nothing moves your case until that date is current.",
+         "summary": "The State Department publishes wait-line movement monthly. Your place in line is your priority date, which is the date the I-130 was filed. Nothing moves your case until that date is current.",
          "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
         {"title": "The sponsor must earn 125% of the poverty guideline",
          "summary": "Whoever files the I-864 Affidavit of Support must show income at 125% of the federal poverty level for their household size. If they fall short, a joint sponsor can sign too.",
@@ -793,7 +806,7 @@ ESSENTIALS = {
          "summary": "The date your PERM or I-140 was filed is your priority date. Compare it against the monthly Visa Bulletin to know when you can file the final step.",
          "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
         {"title": "India and China face the longest EB-2/EB-3 backlogs",
-         "summary": "If you were born in India or China, expect multi-year waits in the main employment categories. Where you were born controls the line — not your citizenship or where you live.",
+         "summary": "If you were born in India or China, expect multi-year waits in the main employment categories. Where you were born controls the line, not your citizenship or where you live.",
          "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
         {"title": "After I-140 approval plus 180 days, you can change jobs",
          "summary": "Once your I-485 has been pending 180 days with an approved I-140, you can move to a same-or-similar job with a new employer without restarting the green card process.",
@@ -1091,11 +1104,15 @@ with tab1:
     if essentials:
         st.markdown("---")
         st.markdown(f"<div class='section-label'>{T['news_essentials_heading']}</div>", unsafe_allow_html=True)
+        st.markdown(
+            f"<p style='color:#6b7280; font-size:0.82rem; margin-bottom:0.4rem;'>{T['essentials_reviewed']}</p>",
+            unsafe_allow_html=True
+        )
         for item in essentials:
             st.markdown(f"""
-            <div class="news-item">
-                <div class="news-meta"><span class="pill-essential">{T["essential_tag"]}</span></div>
-                <div class="news-title"><a href="{item.get("link", "")}" target="_blank" rel="noopener">{item.get("title", "")}</a></div>
+            <div class="plain-item">
+                <div class="news-title"><a href="{item.get("link", "")}" target="_blank" rel="noopener">{item.get("title", "")}</a>
+                &nbsp;<span class="pill-essential">{T["essential_tag"]}</span></div>
                 <div class="news-context">{item.get("summary", "")}</div>
             </div>
             """, unsafe_allow_html=True)
@@ -1606,10 +1623,21 @@ with tab4:
     st.markdown("""
     Immigration Co-Pilot is a free tool built to make US immigration information more accessible.
 
-    Most people going through a green card or visa process can't afford an attorney — or don't know
+    Most people going through a green card or visa process can't afford an attorney, or don't know
     if they even need one. The goal here is to give you a clear starting point: what forms you need,
-    what documents to gather, and what's actually happening in immigration policy right now —
+    what documents to gather, and what's actually happening in immigration policy right now,
     in your own language.
+    """)
+
+    st.markdown("**Who made this**")
+    st.markdown("""
+    We're Saina and Arsh, two students. Our families went through this system, and we watched
+    the people around us pay for answers that were sitting on USCIS.gov the whole time, or worse,
+    miss deadlines because a scary letter sat unopened in a drawer.
+
+    So we built the tool we wished our parents had: something that reads the letter, tells you
+    the deadline, and says what to do next in the language you think in. It's free, it stays free,
+    and every line of code is public. If it helps your family, that's the whole point.
     """)
 
     st.markdown("**Where the information comes from**")
@@ -1659,3 +1687,17 @@ with tab4:
         "<a href='https://github.com/sainakakkar2006/immigration-copilot'>github.com/sainakakkar2006/immigration-copilot</a></p>",
         unsafe_allow_html=True
     )
+
+
+# ---------------------------------------------------------------------------
+# Footer — who made this, on every page
+# ---------------------------------------------------------------------------
+st.markdown(f"""
+<div class="site-footer">
+    {T["footer_made"]}
+    {T["footer_sources"]}<br>
+    <a href="https://github.com/sainakakkar2006/immigration-copilot" target="_blank" rel="noopener">Open source on GitHub</a>
+    &nbsp;·&nbsp; <a href="https://github.com/sainakakkar2006/immigration-copilot/issues" target="_blank" rel="noopener">{T["footer_feedback"]}</a>
+    &nbsp;·&nbsp; <a href="https://www.immigrationlawhelp.org" target="_blank" rel="noopener">immigrationlawhelp.org</a>
+</div>
+""", unsafe_allow_html=True)
