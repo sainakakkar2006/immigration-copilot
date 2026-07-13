@@ -1041,7 +1041,7 @@ with tab1:
             except Exception:
                 enriched = []
             if enriched:
-                source_note = f"From USCIS.gov and other official sources — last updated {fetched_date}"
+                source_note = f"From USCIS.gov and other official sources, last updated {fetched_date}"
 
         # Live search grounding when the file is empty or thin
         if len(enriched) < 5:
@@ -1051,7 +1051,7 @@ with tab1:
             if fresh:
                 enriched = enriched + fresh
                 source_note = (source_note + " · plus live Google Search of official sources") if source_note \
-                    else "Found through live Google Search of official sources — just now"
+                    else "Found through a live Google Search of official sources just now"
 
         # Last resort: model knowledge, clearly labeled
         if not enriched:
@@ -1074,7 +1074,7 @@ with tab1:
                 "priority": "medium",
                 "affects": "",
             } for i in raw_items[:8]]
-            source_note = f"Official headlines from USCIS.gov and other government sources — last updated {fetched_date}"
+            source_note = f"Official headlines from USCIS.gov and other government sources, last updated {fetched_date}"
 
     st.markdown(f"<div class='section-label'>{T['news_latest_heading']}</div>", unsafe_allow_html=True)
     if not enriched:
