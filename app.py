@@ -149,21 +149,56 @@ LANG = LANGUAGES[ui_lang]
 
 st.markdown(f"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {{
+    --ink: #1a202c;
+    --body-text: #374151;
+    --muted: #57606a;
+    --line: #e4e2de;
+    --paper: #faf9f7;
+    --card: #ffffff;
+    --brand: #1d4ed8;
+    --brand-dark: #1e40af;
+    --brand-tint: #eff6ff;
+}}
 
 html {{ font-size: {BASE_FONT}px; }}
-html, body, [class*="css"] {{
-    font-family: 'DM Sans', sans-serif;
+
+html, body, [class*="css"], .stApp, .stMarkdown, button, input, textarea, select {{
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }}
+
+.stApp {{ background: var(--paper); }}
+
 .block-container {{
-    padding: 2.5rem 2rem 5rem;
-    max-width: 860px;
+    padding: 2rem 2rem 6rem;
+    max-width: 880px;
 }}
-h1, h2, h3 {{ color: #111827; }}
-p {{ color: #374151; line-height: 1.7; }}
+@media (max-width: 640px) {{
+    .block-container {{ padding: 1.2rem 1rem 4rem; }}
+}}
+
+h1, h2, h3,
+.stMarkdown h1, .stMarkdown h2, .stMarkdown h3,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {{
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif !important;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+    line-height: 1.22;
+    font-weight: 600;
+}}
+h3, .stMarkdown h3, [data-testid="stMarkdownContainer"] h3 {{
+    font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.65rem);
+    padding-top: 0.4rem;
+}}
+p {{ color: var(--body-text); line-height: 1.65; max-width: 70ch; }}
+li {{ line-height: 1.65; }}
 
 *:focus-visible {{
-    outline: 3px solid #1d4ed8 !important;
+    outline: 3px solid var(--brand) !important;
     outline-offset: 2px;
     border-radius: 4px;
 }}
@@ -172,139 +207,236 @@ p {{ color: #374151; line-height: 1.7; }}
 }}
 
 .site-header {{
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
 }}
 .site-title {{
-    font-size: 1.6rem;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.3rem);
     font-weight: 700;
-    color: #111827;
+    letter-spacing: -0.015em;
+    color: var(--ink);
     margin: 0;
 }}
+.site-title::after {{
+    content: "";
+    display: block;
+    width: 3.5rem;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--brand);
+    margin-top: 0.6rem;
+}}
 .site-desc {{
-    color: #4b5563;
-    font-size: 0.95rem;
-    margin-top: 0.3rem;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0.7rem;
+    max-width: 62ch;
 }}
 .advice-note {{
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.7rem 1.1rem;
     font-size: 0.85rem;
-    color: #4b5563;
-    margin-bottom: 1.5rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
 }}
 
+/* Tabs: bigger targets, clear active state */
+.stTabs [data-baseweb="tab-list"] {{
+    gap: 0.15rem;
+    border-bottom: 1px solid var(--line);
+}}
+.stTabs [data-baseweb="tab"] {{
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    padding: 0.7rem 0.95rem;
+}}
+.stTabs [data-baseweb="tab"][aria-selected="true"] {{
+    color: var(--ink);
+    font-weight: 600;
+}}
+
+/* News as cards */
 .news-item {{
-    border-bottom: 1px solid #f3f4f6;
-    padding: 1.2rem 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 0.8rem;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}}
+.news-item:hover {{
+    border-color: #c9d2e8;
+    box-shadow: 0 3px 10px rgba(16, 24, 40, 0.07);
 }}
 .news-title {{
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 600;
-    color: #111827;
+    line-height: 1.45;
+    color: var(--ink);
     margin: 0 0 0.3rem;
 }}
+.news-title a {{ text-decoration: none; }}
+.news-title a:hover {{ text-decoration: underline; text-underline-offset: 3px; }}
 .news-meta {{
-    font-size: 0.82rem;
-    color: #6b7280;
+    font-size: 0.8rem;
+    color: var(--muted);
     margin-bottom: 0.5rem;
 }}
 .news-context {{
-    color: #4b5563;
-    font-size: 0.9rem;
+    color: var(--body-text);
+    font-size: 0.92rem;
     margin: 0.4rem 0 0;
     line-height: 1.6;
 }}
-.priority-high {{ color: #b91c1c; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }}
-.priority-medium {{ color: #b45309; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }}
-.priority-low {{ color: #047857; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }}
+
+/* Priority pills */
+.priority-high, .priority-medium, .priority-low {{
+    display: inline-block;
+    padding: 0.12rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    vertical-align: 1px;
+}}
+.priority-high {{ background: #fef2f2; color: #b91c1c; }}
+.priority-medium {{ background: #fffbeb; color: #b45309; }}
+.priority-low {{ background: #ecfdf5; color: #047857; }}
 
 .section-label {{
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #6b7280;
+    color: var(--muted);
     margin-bottom: 0.8rem;
 }}
 .info-box {{
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
     padding: 1rem 1.2rem;
     margin: 0.8rem 0;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    line-height: 1.6;
 }}
 .flag-box {{
-    background: #fef9f0;
+    background: #fffaf0;
+    border: 1px solid #fde8c3;
     border-left: 3px solid #f59e0b;
     padding: 0.8rem 1rem;
-    border-radius: 0 6px 6px 0;
+    border-radius: 8px;
     margin: 0.5rem 0;
     font-size: 0.9rem;
-    color: #374151;
+    line-height: 1.6;
+    color: var(--body-text);
 }}
 .form-tag {{
     display: inline-block;
-    background: #eff6ff;
-    color: #1d4ed8;
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
+    background: var(--brand-tint);
+    color: var(--brand);
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
     font-weight: 600;
     font-size: 0.85rem;
     margin: 0.2rem;
 }}
 .step-item {{
     display: flex;
-    gap: 1rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #f3f4f6;
+    gap: 0.9rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
     align-items: flex-start;
 }}
+.step-item:last-child {{ border-bottom: none; }}
 .step-num {{
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    color: #1d4ed8;
-    padding-top: 2px;
+    color: var(--brand);
+    background: var(--brand-tint);
+    border-radius: 999px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    width: 20px;
 }}
 .deadline-row {{
     display: flex;
     gap: 1rem;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid #f3f4f6;
+    padding: 0.85rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
     align-items: flex-start;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
 }}
 .deadline-date {{
     font-weight: 700;
-    color: #111827;
+    color: var(--ink);
     flex-shrink: 0;
-    width: 130px;
+    width: 140px;
     font-size: 0.92rem;
+    line-height: 1.4;
 }}
 .deadline-what {{
-    color: #374151;
+    color: var(--body-text);
     font-size: 0.92rem;
+    line-height: 1.6;
 }}
-.deadline-past {{ opacity: 0.45; }}
+.deadline-past {{ opacity: 0.5; }}
+
+/* Buttons: filled primary CTAs, quiet secondary */
 .stButton > button, .stDownloadButton > button, .stFormSubmitButton > button {{
-    background: #ffffff !important;
-    color: #111827 !important;
-    border: 1.5px solid #d1d5db !important;
-    border-radius: 6px !important;
-    font-weight: 500 !important;
-    padding: 0.5rem 1.4rem !important;
-    font-size: 0.9rem !important;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.55rem 1.5rem;
+    font-size: 0.93rem;
+    border: 1.5px solid #d0d7de;
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }}
 .stButton > button:hover, .stDownloadButton > button:hover, .stFormSubmitButton > button:hover {{
-    background: #f9fafb !important;
-    color: #111827 !important;
-    border-color: #6b7280 !important;
+    border-color: var(--brand);
+    color: var(--brand);
+    background: var(--card);
 }}
-a {{ color: #1d4ed8; }}
+[data-testid="stBaseButton-primary"], [data-testid="stBaseButton-primaryFormSubmit"] {{
+    background: var(--brand) !important;
+    color: #ffffff !important;
+    border: 1.5px solid var(--brand) !important;
+}}
+[data-testid="stBaseButton-primary"]:hover, [data-testid="stBaseButton-primaryFormSubmit"]:hover {{
+    background: var(--brand-dark) !important;
+    border-color: var(--brand-dark) !important;
+    color: #ffffff !important;
+}}
+
+/* Inputs: white on paper, comfortable */
+[data-baseweb="select"] > div, .stTextInput input, .stTextArea textarea, .stNumberInput input, .stDateInput input {{
+    background: var(--card);
+    border-radius: 8px;
+}}
+.stExpander {{
+    background: var(--card);
+    border-radius: 10px;
+}}
+
+a {{ color: var(--brand); text-underline-offset: 3px; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -633,7 +765,7 @@ with tab_decode:
         key="letter_upload",
     )
 
-    if st.button(T["decode_button"]):
+    if st.button(T["decode_button"], type="primary"):
         if not letter:
             st.warning(T["decode_no_file"])
         else:
@@ -881,7 +1013,7 @@ with tab2:
         height=100
     )
 
-    if st.button(T["situation_button"]):
+    if st.button(T["situation_button"], type="primary"):
         with st.spinner(T["situation_spinner"]):
             prompt = f"""You are an experienced US immigration advisor. Read this person's situation carefully and give them a clear, honest, direct assessment. Write like you're explaining this to a friend — no jargon, no filler phrases, no hedging beyond what's legally necessary.
 
@@ -1102,7 +1234,7 @@ with tab_opt:
     with col_s:
         stem_eligible = st.checkbox(T["opt_stem_eligible"], value=(stage == "on_opt"))
 
-    if st.button(T["opt_button"]):
+    if st.button(T["opt_button"], type="primary"):
         st.session_state["opt_result"] = {
             "deadlines": build_opt_deadlines(stage, key_date, stem_eligible),
             "stage": stage,
@@ -1178,7 +1310,7 @@ with tab3:
 
         notes = st.text_area(T["checklist_notes_label"], placeholder=T["checklist_notes_ph"], height=70)
 
-        submitted = st.form_submit_button(T["checklist_button"])
+        submitted = st.form_submit_button(T["checklist_button"], type="primary")
 
     if submitted:
         if not gc_country.strip():
