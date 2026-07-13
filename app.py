@@ -48,7 +48,10 @@ T_EN = {
     "news_heading": "What's happening in US immigration",
     "news_filter_label": "Show news about",
     "news_loading": "Fetching the latest immigration news...",
-    "news_none": "No news available right now. Check back after the next update.",
+    "news_none": "No new headlines for this topic right now. The essentials below always apply.",
+    "news_latest_heading": "Latest news",
+    "news_essentials_heading": "The essentials — always true for this topic",
+    "essential_tag": "Essential",
     "news_fr_heading": "Recent regulatory activity — Federal Register",
     "news_fr_unavailable": "Federal Register data unavailable right now.",
     "priority": "priority",
@@ -312,6 +315,18 @@ li {{ line-height: 1.65; }}
 .priority-high {{ background: #fef2f2; color: #b91c1c; }}
 .priority-medium {{ background: #fffbeb; color: #b45309; }}
 .priority-low {{ background: #ecfdf5; color: #047857; }}
+.pill-essential {{
+    display: inline-block;
+    padding: 0.12rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--brand-tint);
+    color: var(--brand);
+    vertical-align: 1px;
+}}
 
 .section-label {{
     font-size: 0.75rem;
@@ -703,6 +718,116 @@ Return a JSON array of 5-7 items. Each object:
 
 
 # ---------------------------------------------------------------------------
+# Evergreen essentials — curated in code so every topic always has content.
+# These are stable rules from statute/regulation, not news; the AI never
+# generates them, only translates them.
+# ---------------------------------------------------------------------------
+ESSENTIALS = {
+    "All": [
+        {"title": "Never miss a deadline on a USCIS notice",
+         "summary": "Deadlines on Requests for Evidence and other notices are strict — missing one usually means a denial. Read every letter the day it arrives and calendar the response date immediately.",
+         "link": "https://www.uscis.gov/forms/filing-guidance/responding-to-a-request-for-evidence-or-notice-of-intent-to-deny"},
+        {"title": "Report your address within 10 days of moving",
+         "summary": "Almost everyone who is not a US citizen must file Form AR-11 within 10 days of changing address. It takes 5 minutes online and protects you from missing mail about your case.",
+         "link": "https://www.uscis.gov/ar-11"},
+        {"title": "Check your case status and processing times yourself",
+         "summary": "You can track any receipt number free at the official USCIS case status page, and see how long your form type is taking at your service center. No one can speed this up for a fee.",
+         "link": "https://egov.uscis.gov/casestatus/landing.do"},
+        {"title": "Beware of notario fraud",
+         "summary": "Only licensed attorneys and DOJ-accredited representatives can give immigration legal advice. A 'notario' or consultant who promises results is a red flag — free or low-cost real help exists.",
+         "link": "https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams"},
+        {"title": "Keep copies of everything",
+         "summary": "Photocopy or scan every page you send to the government and use tracked mail. Your own complete file is often the only record you can rely on later.",
+         "link": "https://www.uscis.gov/forms/filing-guidance"},
+    ],
+    "H-1B": [
+        {"title": "The H-1B lottery registration happens every March",
+         "summary": "Your employer registers you electronically in early March for a job starting October 1. If you miss the window, you wait a full year — talk to your employer well before spring.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations"},
+        {"title": "You have a 60-day grace period if you lose your job",
+         "summary": "After a layoff you get up to 60 days (or until your I-94 expires, whichever is shorter) to find a new sponsor, change status, or leave. A new employer can file a transfer petition during this window.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/information-for-employers-and-employees/options-for-nonimmigrant-workers-following-termination-of-employment"},
+        {"title": "H-1B is dual intent — you can pursue a green card",
+         "summary": "Unlike many visas, being on H-1B while applying for permanent residence is fully allowed. Ask your employer about starting the PERM process early, because backlogs are long for some countries.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/permanent-workers"},
+        {"title": "Your H-4 spouse may be able to work",
+         "summary": "If your I-140 immigrant petition is approved, your spouse can apply for an H-4 work permit (EAD). Many families miss this benefit entirely.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-4-spouses"},
+    ],
+    "F-1 / Students": [
+        {"title": "Apply for OPT in the 90-day window before your program ends",
+         "summary": "USCIS can receive your OPT application up to 90 days before your program end date and no later than 60 days after. Applying early matters — approvals take months and you cannot work until approved.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students"},
+        {"title": "Watch your unemployment days on OPT",
+         "summary": "You get a maximum of 90 days without a job on regular OPT, and 150 total if you extend with STEM OPT. Going over can end your status — report every job to your school's international office.",
+         "link": "https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-optional-practical-training-opt"},
+        {"title": "Keep your SEVIS record accurate",
+         "summary": "Report address and employer changes to your Designated School Official within 10 days. A clean SEVIS record is what keeps your status alive — most preventable problems start here.",
+         "link": "https://studyinthestates.dhs.gov/"},
+        {"title": "On-campus work is capped at 20 hours a week during term",
+         "summary": "Working more than 20 hours a week on campus during the semester is a status violation, even if your employer schedules it. Full time is allowed during official breaks.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment"},
+        {"title": "Cap-gap protects you between OPT and H-1B",
+         "summary": "If your employer files an H-1B petition while your OPT is valid and you're selected, your status and work authorization automatically extend until the H-1B starts October 1.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/extension-of-post-completion-optional-practical-training-opt-and-f-1-status-for-eligible-students"},
+    ],
+    "Family Green Cards": [
+        {"title": "Immediate relatives of US citizens have no waiting line",
+         "summary": "Spouses, parents, and unmarried children under 21 of US citizens are never subject to annual limits — the only wait is processing time. All other family categories wait for a priority date.",
+         "link": "https://www.uscis.gov/family/family-of-us-citizens"},
+        {"title": "Check the Visa Bulletin every month if you're in a preference category",
+         "summary": "The State Department publishes wait-line movement monthly. Your place in line is your priority date — the date the I-130 was filed. Nothing moves your case until that date is current.",
+         "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
+        {"title": "The sponsor must earn 125% of the poverty guideline",
+         "summary": "Whoever files the I-864 Affidavit of Support must show income at 125% of the federal poverty level for their household size. If they fall short, a joint sponsor can sign too.",
+         "link": "https://www.uscis.gov/i-864p"},
+        {"title": "Married under 2 years? Your green card will be conditional",
+         "summary": "You'll get a 2-year conditional card and must file Form I-751 in the 90 days before it expires to get the permanent one. Missing that window is one of the most common and serious mistakes.",
+         "link": "https://www.uscis.gov/green-card/after-we-grant-your-green-card/conditional-permanent-residence"},
+        {"title": "Don't travel abroad with a pending I-485 unless you have advance parole",
+         "summary": "Leaving the US while your adjustment of status is pending, without an approved travel document, usually means your application is considered abandoned.",
+         "link": "https://www.uscis.gov/i-131"},
+    ],
+    "Employment Green Cards": [
+        {"title": "Your priority date is your place in line — check it monthly",
+         "summary": "The date your PERM or I-140 was filed is your priority date. Compare it against the monthly Visa Bulletin to know when you can file the final step.",
+         "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
+        {"title": "India and China face the longest EB-2/EB-3 backlogs",
+         "summary": "If you were born in India or China, expect multi-year waits in the main employment categories. Where you were born controls the line — not your citizenship or where you live.",
+         "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
+        {"title": "After I-140 approval plus 180 days, you can change jobs",
+         "summary": "Once your I-485 has been pending 180 days with an approved I-140, you can move to a same-or-similar job with a new employer without restarting the green card process.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/permanent-workers"},
+        {"title": "EB-1 and National Interest Waiver skip the PERM step",
+         "summary": "Extraordinary-ability, outstanding-researcher, and NIW cases don't need labor certification, which can cut a year or more off the process. Worth assessing if you have a strong research or achievement record.",
+         "link": "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-first-preference-eb-1"},
+    ],
+}
+
+
+@st.cache_data(ttl=None, show_spinner=False)
+def translated_essentials(topic, lang):
+    items = ESSENTIALS.get(topic, [])
+    if lang == "English" or not items:
+        return items
+    try:
+        prompt = f"""Translate the "title" and "summary" values of each item into {lang} for a US immigration help site. Plain, warm, everyday language. Keep form numbers (I-751, AR-11), program names (OPT, STEM OPT, PERM, SEVIS, H-1B, EB-2), and "link" values exactly unchanged.
+
+Return ONLY the JSON array with the same structure.
+
+{json.dumps(items, ensure_ascii=False)}"""
+        result = generate(prompt)
+        if isinstance(result, list) and len(result) == len(items):
+            # Never let translation drop or alter the official links
+            for translated, original in zip(result, items):
+                translated["link"] = original["link"]
+            return result
+    except Exception:
+        pass
+    return items
+
+
+# ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
 st.markdown(f"""
@@ -938,6 +1063,7 @@ with tab1:
             } for i in raw_items[:8]]
             source_note = f"Official headlines from USCIS.gov and other government sources — last updated {fetched_date}"
 
+    st.markdown(f"<div class='section-label'>{T['news_latest_heading']}</div>", unsafe_allow_html=True)
     if not enriched:
         st.markdown(f"<div class='info-box'>{T['news_none']}</div>", unsafe_allow_html=True)
     else:
@@ -957,6 +1083,20 @@ with tab1:
                 <div class="news-meta">{pub} &nbsp;·&nbsp; {priority_html}{source_html} &nbsp;·&nbsp; {item.get("affects", "")}</div>
                 <div class="news-title"><a href="{link}" target="_blank" rel="noopener">{item.get("title", "")}</a></div>
                 <div class="news-context">{item.get("plain_summary", "")}</div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Evergreen essentials — always shown, whatever the news cycle is doing
+    essentials = translated_essentials(topic_filter, LANG)
+    if essentials:
+        st.markdown("---")
+        st.markdown(f"<div class='section-label'>{T['news_essentials_heading']}</div>", unsafe_allow_html=True)
+        for item in essentials:
+            st.markdown(f"""
+            <div class="news-item">
+                <div class="news-meta"><span class="pill-essential">{T["essential_tag"]}</span></div>
+                <div class="news-title"><a href="{item.get("link", "")}" target="_blank" rel="noopener">{item.get("title", "")}</a></div>
+                <div class="news-context">{item.get("summary", "")}</div>
             </div>
             """, unsafe_allow_html=True)
 
