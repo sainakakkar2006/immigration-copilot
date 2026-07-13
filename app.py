@@ -480,7 +480,8 @@ if not api_key:
     st.error("GEMINI_API_KEY not found. Add it to Streamlit secrets.")
     st.stop()
 
-client = genai.Client(api_key=api_key)
+# 30s timeout so one slow API call can never hang the whole page
+client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=30_000))
 
 
 def _parse_json(text):
@@ -1043,8 +1044,9 @@ with tab1:
             if enriched:
                 source_note = f"From USCIS.gov and other official sources, last updated {fetched_date}"
 
-        # Live search grounding when the file is empty or thin
-        if len(enriched) < 5:
+        # Live search grounding only when there's nothing to show. It's the
+        # slowest call, so keep it out of the common path.
+        if not enriched:
             live = grounded_news(topic_filter, LANG) or []
             seen_titles = {i.get("title", "").lower() for i in enriched}
             fresh = [i for i in live if i.get("title", "").lower() not in seen_titles]
