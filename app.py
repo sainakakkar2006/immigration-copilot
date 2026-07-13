@@ -600,13 +600,17 @@ def enrich_news(news_items_json, topic_filter, lang):
             "Employment Green Cards": ["employment", "eb-1", "eb-2", "eb-3", "perm", "priority date", "labor", "green card", "permanent resident"],
         }
         keywords = topic_keywords.get(topic_filter, [])
-        if keywords:
-            specific = [i for i in items if any(k in (i.get("title", "") + i.get("summary", "")).lower() for k in keywords)]
-            filtered = specific if specific else items
+        specific = [i for i in items if any(k in (i.get("title", "") + i.get("summary", "")).lower() for k in keywords)]
+        if not specific:
+            # Nothing in the file matches this topic — let the live-search
+            # fallback supply topic-specific news instead of showing
+            # the same unrelated items for every topic.
+            return []
+        filtered = specific
 
     topic_instruction = ""
     if topic_filter != "All":
-        topic_instruction = f'\n\nContext: the user selected "{topic_filter}". Prioritize items relevant to that group. For items that are general immigration policy (not specific to any visa type), include them — they likely affect everyone. Only skip items that are clearly DHS internal operations, staff bios, IT systems, or completely unrelated to immigration.'
+        topic_instruction = f'\n\nSTRICT TOPIC FILTER: the user selected "{topic_filter}". Only include items genuinely relevant to that topic ({TOPIC_FOCUS.get(topic_filter, "")}). Skip every item that is not about this topic, even if it is important general immigration news. If no items qualify, return an empty JSON array.'
 
     prompt = f"""You are an immigration news analyst. For each news item below, write a plain 2-sentence explanation of what it means for immigrants.
 
@@ -896,8 +900,6 @@ with tab1:
         if source == "file" and raw_items:
             try:
                 enriched = enrich_news(json.dumps(raw_items), topic_filter, LANG) or []
-                if not enriched and topic_filter != "All":
-                    enriched = enrich_news(json.dumps(raw_items), "All", LANG) or []
             except Exception:
                 enriched = []
             if enriched:
@@ -923,7 +925,8 @@ with tab1:
                 source_note = "Based on recent USCIS and policy updates"
 
         # If every AI path failed, still show the real government headlines
-        if not enriched and raw_items:
+        # (only for "All" — raw headlines aren't filtered by topic)
+        if not enriched and raw_items and topic_filter == "All":
             enriched = [{
                 "title": i.get("title", ""),
                 "link": i.get("link", ""),
