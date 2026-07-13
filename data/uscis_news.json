@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-07-11T09:40:40.976775+00:00",
-  "count": 1,
+  "fetched_at": "2026-07-13T05:02:41.704858+00:00",
+  "count": 3,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -10,11 +10,27 @@
   ],
   "items": [
     {
-      "title": "Mission Critical Push-to-Talk Systems",
-      "link": "https://www.dhs.gov/science-and-technology/saver/mission-critical-push-talk-systems",
-      "summary": "<span class=\"field field--name-title field--type-string field--label-hidden\">Mission Critical Push-to-Talk Systems</span>\n<span class=\"field field--name-uid field--type-entity-reference field--label-hidden\"><span>maya.norman</span></span>\n<span class=\"field field--name-created field--type-created field--label-hidden\"><time class=\"datetime\" datetime=\"2026-05-15T15:25:08-04:00\" title=\"Friday, May 15, 2026 - 15:25\">Fri, 05/15/2026 - 15:25</time>\n</span>\n  <div class=\"layout layout--onecol\">\n    <div class=\"layout__region layout__region--content\">\n      \n            <div class=\"clearfix text-forma",
-      "published": "Fri, 15 May 2026 19:25:08 +0000",
-      "source": "DHS"
+      "title": "President Trump\u2019s America First Agenda Scores Major Supreme Court Win on TPS Termination",
+      "link": "https://www.whitehouse.gov/releases/2026/06/president-trumps-america-first-agenda-scores-major-supreme-court-win-on-tps-termination/",
+      "summary": "<p>The Supreme Court has delivered a major victory for American sovereignty, ruling that the Trump Administration has full authority to terminate Temporary Protected Status (TPS) for Haitian migrants. The Biden Administration weaponized TPS as a backdoor amnesty to flood the country with millions of unvetted migrants \u2014 and that loophole is finally closed. This is [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/releases/2026/06/president-trumps-america-first-agenda-scores-major-supreme-court-win-on-tps-termination/\">President Trump\u2019s America First Agenda Scores Major Supreme Court",
+      "published": "Fri, 26 Jun 2026 18:13:13 +0000",
+      "source": "White House"
+    },
+    {
+      "title": "Rescinding Portions of Department of State Title VI Regulations To Conform More Closely With the Statutory Text and To Implement Executive Order 14281",
+      "link": "https://www.federalregister.gov/documents/2026/07/09/2026-13860/rescinding-portions-of-department-of-state-title-vi-regulations-to-conform-more-closely-with-the",
+      "summary": "By this rule, the Department of State (\"Department\") amends its regulations implementing Title VI of the Civil Rights Act of 1964 (\"Title VI\") to align its regulations with Title VI and, relatedly, to conform to Executive Order 14281.",
+      "published": "2026-07-09",
+      "source": "Federal Register",
+      "doc_type": "Rule"
+    },
+    {
+      "title": "Naturalization Application Fee Adjustments",
+      "link": "https://www.federalregister.gov/documents/2026/07/08/C1-2026-12542/naturalization-application-fee-adjustments",
+      "summary": "",
+      "published": "2026-07-08",
+      "source": "Federal Register",
+      "doc_type": "Proposed Rule"
     }
   ]
 }
