@@ -12,16 +12,16 @@
   <!-- BADGES:END -->
 </p>
 
-# Immigration Co-Pilot
+# immigration-copilot
 
 Author: Saina Kakkar
 Built for the **Build with Gemini XPRIZE** (XPRIZE Foundation + Google)
 
 ### Project Description
-Immigration Co-Pilot is a free web tool for immigrant families who are trying
-to understand the US immigration system. I built it for people who cannot
-afford an attorney and need plain-language answers about what is happening in
-their case and what to do next, in their own language.
+Immigration Co-Pilot is a free web tool for immigrant families who are
+trying to understand the US immigration system. I built it for people who
+cannot afford an attorney and need plain-language answers about what is
+happening in their case and what to do next, in their own language.
 
 The numbers that made me build this:
 
@@ -31,25 +31,34 @@ The numbers that made me build this:
 
 ## Table of Contents
 
-* [Key Features](#key-features)
+* [The Six Tabs](#the-six-tabs)
 * [How Gemini Is Used](#how-gemini-is-used)
 * [Architecture](#architecture)
 * [Problems I Ran Into](#problems-i-ran-into)
 * [Running Locally](#running-locally)
 * [Live Demo](#live-demo)
+* [Project Layout](#project-layout)
 * [Privacy & Safety](#privacy--safety)
 * [Disclaimer](#disclaimer)
 
-## Key Features
+## The Six Tabs
 
-| Feature | How it works |
+The app is organized as six tabs, and each one is a separate feature:
+
+| Tab | What it does |
 |---|---|
 | **Decode a Letter** | You photograph any USCIS/ICE/State Dept notice (RFE, NOID, receipt, denial). Gemini reads the photo directly, pulls out the notice type, case number, and every deadline, explains it at a 5th-grade reading level, and gives you a calendar (.ics) file with reminders. |
 | **News** | Real headlines from USCIS, the White House, the State Department, and the Federal Register. A GitHub Action fetches them every 2 days and Gemini explains each one in plain language. When the feeds are quiet, Gemini searches the live web with Google Search grounding and cites what it finds. |
 | **Your Situation** | You describe your case, optionally attach a document (PDF or photo), and get an honest assessment: issues, urgency, actions, deadlines, and official resources. |
 | **OPT Deadlines** | Every OPT / STEM OPT deadline is computed in code from USCIS rules. The AI explains the dates but it never invents them. Includes calendar download. |
 | **Green Card Checklist** | Case-specific forms, fees, document checklist, red flags, timeline, and a ready-to-edit cover letter. You can download it to share with family or an attorney. |
-| **12 languages** | The whole interface and every answer is available in English, Spanish, Chinese, Hindi, Tagalog, Vietnamese, Korean, Portuguese, Arabic, Haitian Creole, Russian, and French. Gemini translates once per language and the result is cached. |
+| **About** | What the tool is, what it is not (a law firm), and where to find free legal aid. |
+
+The whole interface and every answer is available in 12 languages: English,
+Spanish, Chinese, Hindi, Tagalog, Vietnamese, Korean, Portuguese, Arabic,
+Haitian Creole, Russian, and French. Gemini translates the interface once
+per language and the result is cached, so switching languages is instant
+after the first time.
 
 ## How Gemini Is Used
 
@@ -141,6 +150,24 @@ Prefer not to run locally? Check out the deployed app here:
 [Immigration Co-Pilot on Streamlit](https://immigration-copilot-adazqhaecrqc8g7dujpe7h.streamlit.app/)
 
 Project site: [sainakakkar2006.github.io/immigration-copilot](https://sainakakkar2006.github.io/immigration-copilot/)
+
+## Project Layout
+
+```
+app.py               the whole Streamlit app: six tabs, Gemini calls,
+                     translation cache, calendar generation
+fetch_news.py        run by the GitHub Action: pulls the government RSS
+                     feeds + Federal Register API and writes data/
+data/
+  uscis_news.json    the news the app reads (committed by the Action)
+docs/                the GitHub Pages landing site
+DEPLOY.md            notes for deploying to Streamlit Community Cloud
+requirements.txt     streamlit + google-genai + feed parsing
+```
+
+Keeping the app in one `app.py` was a deliberate choice for Streamlit
+Community Cloud: one file, one process, no import path surprises on deploy.
+At around 900 lines it is at the limit of where I would split it.
 
 ## Privacy & Safety
 
