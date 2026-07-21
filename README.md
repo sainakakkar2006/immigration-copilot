@@ -185,3 +185,7 @@ At around 900 lines it is at the limit of where I would split it.
 This is not a law firm and does not give legal advice. If your case involves
 prior violations, criminal history, or deportation proceedings, please
 consult a licensed immigration attorney.
+
+## License
+
+MIT. See the [LICENSE](LICENSE) file.
