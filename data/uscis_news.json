@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-07-19T09:54:26.095703+00:00",
-  "count": 2,
+  "fetched_at": "2026-07-21T10:27:29.503818+00:00",
+  "count": 4,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -9,6 +9,22 @@
     "Federal Register"
   ],
   "items": [
+    {
+      "title": "USCIS Immigration Fees and Related Procedures Required by H.R.1 Reconciliation Bill; Correction",
+      "link": "https://www.federalregister.gov/documents/2026/07/21/2026-14698/uscis-immigration-fees-and-related-procedures-required-by-hr1-reconciliation-bill-correction",
+      "summary": "This document corrects the interim final rule (IFR) that published in the Federal Register on April 29, 2026. The IFR codified certain immigration fees and other provisions required by the One Big Beautiful Bill Act (H.R. 1) and amended USCIS regulations governing asylum and annual asylum fees, the new Form I-94 fee requirement, the validity period for certain types of employment authorization, and the retention of the Form I-589 filing fee for every application. This document will restore regulatory language that was unintentionally removed in the April 29, 2026 IFR.",
+      "published": "2026-07-21",
+      "source": "Federal Register",
+      "doc_type": "Rule"
+    },
+    {
+      "title": "Determination Pursuant to Section 102 of the Illegal Immigration Reform and Immigrant Responsibility Act of 1996, as Amended",
+      "link": "https://www.federalregister.gov/documents/2026/07/21/2026-14604/determination-pursuant-to-section-102-of-the-illegal-immigration-reform-and-immigrant-responsibility",
+      "summary": "The Secretary of Homeland Security has determined, pursuant to law, that it is necessary to waive certain laws, regulations, and other legal requirements in order to ensure the expeditious construction of barriers and roads in the vicinity of the international land border in the state of Arizona.",
+      "published": "2026-07-21",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    },
     {
       "title": "Establishing a Fixed Time Period of Admission and an Extension of Stay Procedure for Nonimmigrant Academic Students, Exchange Visitors, and Representatives of Foreign Information Media",
       "link": "https://www.federalregister.gov/documents/2026/07/17/2026-14439/establishing-a-fixed-time-period-of-admission-and-an-extension-of-stay-procedure-for-nonimmigrant",
