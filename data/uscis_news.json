@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-07-23T10:25:43.097633+00:00",
-  "count": 0,
+  "fetched_at": "2026-07-25T09:51:48.413435+00:00",
+  "count": 2,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -8,5 +8,21 @@
     "State Department",
     "Federal Register"
   ],
-  "items": []
+  "items": [
+    {
+      "title": "New Visa Restriction Policy to Deter and Dismantle Cyberscams and Sextortion",
+      "link": "https://www.state.gov/releases/office-of-the-spokesperson/2026/07/new-visa-restriction-policy-to-deter-and-dismantle-cyberscams-and-sextortion/",
+      "summary": "<p>Marco Rubio, Secretary of State</p>\n\n<section class=\"wp-block-default-hero-container wp-block-default-hero-container--no-featured-content \">\n\n\t<div class=\"wp-block-default-hero module featured-content page-header \">\n\n\t\t\n\t\t<div class=\"row bc_row\">\n\n\t\t\t\n\n\t\t</div>\n\n\t\t<div class=\"row\" dir=\"ltr\">\n\n\t\t\t<div class=\"featured-content__copy\">\n\n\t\t\t\t\n\t\t\t\t<h1 class=\"featured-content__headline stars-above\">\n\n\t\t\t\t\t\n\t\t\t\t\t\tNew Visa Restriction Policy to Deter and Dismantle Cyberscams and Sextortion\n\t\t\t\t\t\n\t\t\t\t</h1>\n\n\t\t\t\t<div class=\"article-meta\">\n\n\t\t\t\t\t<!-- get document type -->\n\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t<p class=\"a",
+      "published": "Thu, 23 Jul 2026 14:45:57 +0000",
+      "source": "State Department"
+    },
+    {
+      "title": "Determination Pursuant to Section 102 of the Illegal Immigration Reform and Immigrant Responsibility Act of 1996, as Amended",
+      "link": "https://www.federalregister.gov/documents/2026/07/27/2026-15096/determination-pursuant-to-section-102-of-the-illegal-immigration-reform-and-immigrant-responsibility",
+      "summary": "The Secretary of Homeland Security has determined, pursuant to law, that it is necessary to waive certain laws, regulations, and other legal requirements in order to ensure the expeditious construction of barriers and roads in the vicinity of the international land border in the state of Texas.",
+      "published": "2026-07-27",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    }
+  ]
 }
