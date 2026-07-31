@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-07-29T10:41:57.412697+00:00",
-  "count": 2,
+  "fetched_at": "2026-07-31T10:42:18.245968+00:00",
+  "count": 4,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -9,6 +9,22 @@
     "Federal Register"
   ],
   "items": [
+    {
+      "title": "Civil Money Penalty for Actions in Contempt of an Immigration Judge's Proper Exercise of Authority",
+      "link": "https://www.federalregister.gov/documents/2026/07/30/2026-15458/civil-money-penalty-for-actions-in-contempt-of-an-immigration-judges-proper-exercise-of-authority",
+      "summary": "This notice of proposed rulemaking (\"NPRM\") would implement a provision of the Immigration and Nationality Act (\"INA\" or \"the Act\") that authorizes Immigration Judges, under regulations prescribed by the Attorney General, to sanction by civil money penalty any action (or inaction) in contempt of the proper exercise of their authority by certain individuals. The rule would: define the scope of the contempt authority; provide procedures for contempt findings, penalty determinations, and penalty payment; establish an appellate process; and implement oversight of the use of contempt authority. The",
+      "published": "2026-07-30",
+      "source": "Federal Register",
+      "doc_type": "Proposed Rule"
+    },
+    {
+      "title": "Agency Information Collection Activities; Submission for OMB Review; Comment Request; Attestation for Employers Seeking To Employ H-2B Nonimmigrant Workers Under Section 105 of Division G, Title I of the Further Consolidated Appropriations Act, 2024, Public Law 118-47, as Extended by Public Law 119-37",
+      "link": "https://www.federalregister.gov/documents/2026/07/30/2026-15424/agency-information-collection-activities-submission-for-omb-review-comment-request-attestation-for",
+      "summary": "The Department of Labor (DOL) is submitting this Employment and Training Administration (ETA)-sponsored information collection request (ICR) to the Office of Management and Budget (OMB) for review and approval in accordance with the Paperwork Reduction Act of 1995 (PRA). Public comments on the ICR are invited.",
+      "published": "2026-07-30",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    },
     {
       "title": "30-Day Notice of Proposed Information Collection: Petition To Classify Special Immigrant Under INA 203(b)(4) as an Employee or Former Employee of the U.S. Government Abroad, or the Surviving Spouse or Child of an Employee of the U.S. Government Abroad",
       "link": "https://www.federalregister.gov/documents/2026/07/29/2026-15268/30-day-notice-of-proposed-information-collection-petition-to-classify-special-immigrant-under-ina",
