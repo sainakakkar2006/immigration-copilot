@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-07-31T10:42:18.245968+00:00",
-  "count": 4,
+  "fetched_at": "2026-08-01T10:02:03.384635+00:00",
+  "count": 3,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -9,6 +9,14 @@
     "Federal Register"
   ],
   "items": [
+    {
+      "title": "Visas: Visa Bond Program",
+      "link": "https://www.federalregister.gov/documents/2026/08/03/2026-15726/visas-visa-bond-program",
+      "summary": "This rule finalizes the temporary final rule that went into effect on August 20, 2025, which launched a 12-month long Visa Bond Pilot Program (Pilot Program), and establishes a permanent visa bond program. An alien applying for a visa as a temporary visitor for business or pleasure (B-1/B-2) may be required to submit a bond (\"visa bond\") to ensure that the alien maintains his or her nonimmigrant status and departs as required. Consular officers may require covered nonimmigrant visa applicants to post a bond of up to $20,000 as a condition of visa issuance, as determined by the consular officer",
+      "published": "2026-08-03",
+      "source": "Federal Register",
+      "doc_type": "Rule"
+    },
     {
       "title": "Civil Money Penalty for Actions in Contempt of an Immigration Judge's Proper Exercise of Authority",
       "link": "https://www.federalregister.gov/documents/2026/07/30/2026-15458/civil-money-penalty-for-actions-in-contempt-of-an-immigration-judges-proper-exercise-of-authority",
@@ -24,22 +32,6 @@
       "published": "2026-07-30",
       "source": "Federal Register",
       "doc_type": "Notice"
-    },
-    {
-      "title": "30-Day Notice of Proposed Information Collection: Petition To Classify Special Immigrant Under INA 203(b)(4) as an Employee or Former Employee of the U.S. Government Abroad, or the Surviving Spouse or Child of an Employee of the U.S. Government Abroad",
-      "link": "https://www.federalregister.gov/documents/2026/07/29/2026-15268/30-day-notice-of-proposed-information-collection-petition-to-classify-special-immigrant-under-ina",
-      "summary": "The Department of State has submitted the information collection described below to the Office of Management and Budget (OMB) for approval. In accordance with the Paperwork Reduction Act of 1995, we are requesting comments on this collection from all interested individuals and organizations. The purpose of this Notice is to allow 30 days for public comment.",
-      "published": "2026-07-29",
-      "source": "Federal Register",
-      "doc_type": "Notice"
-    },
-    {
-      "title": "Affirmative Asylum Referrals Without Interview",
-      "link": "https://www.federalregister.gov/documents/2026/07/28/2026-15190/affirmative-asylum-referrals-without-interview",
-      "summary": "The Department of Homeland Security (DHS) is amending its regulations to permit U.S. Citizenship and Immigration Services (USCIS) to refer certain affirmative asylum applications to the Department of Justice (DOJ) Executive Office for Immigration Review (EOIR) without interview. USCIS still offers an interview prior to a grant or denial of asylum. DHS is also removing the requirement that a letter communicating the basis for referral of asylum include an assessment of the alien's credibility.",
-      "published": "2026-07-28",
-      "source": "Federal Register",
-      "doc_type": "Rule"
     }
   ]
 }
