@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-08-03T11:28:27.337486+00:00",
-  "count": 3,
+  "fetched_at": "2026-08-05T10:38:58.932658+00:00",
+  "count": 2,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -10,28 +10,20 @@
   ],
   "items": [
     {
+      "title": "Agency Information Collection Activities; Revision; Guam-CNMI Visa Waiver Information (Form I-736)",
+      "link": "https://www.federalregister.gov/documents/2026/08/04/2026-15773/agency-information-collection-activities-revision-guam-cnmi-visa-waiver-information-form-i-736",
+      "summary": "The Department of Homeland Security, U.S. Customs and Border Protection (CBP) will be submitting the following information collection request to the Office of Management and Budget (OMB) for review and approval in accordance with the Paperwork Reduction Act of 1995 (PRA). The information collection is published in the Federal Register to obtain comments from the public and affected agencies.",
+      "published": "2026-08-04",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    },
+    {
       "title": "Visas: Visa Bond Program",
       "link": "https://www.federalregister.gov/documents/2026/08/03/2026-15726/visas-visa-bond-program",
       "summary": "This rule finalizes the temporary final rule that went into effect on August 20, 2025, which launched a 12-month long Visa Bond Pilot Program (Pilot Program), and establishes a permanent visa bond program. An alien applying for a visa as a temporary visitor for business or pleasure (B-1/B-2) may be required to submit a bond (\"visa bond\") to ensure that the alien maintains his or her nonimmigrant status and departs as required. Consular officers may require covered nonimmigrant visa applicants to post a bond of up to $20,000 as a condition of visa issuance, as determined by the consular officer",
       "published": "2026-08-03",
       "source": "Federal Register",
       "doc_type": "Rule"
-    },
-    {
-      "title": "Civil Money Penalty for Actions in Contempt of an Immigration Judge's Proper Exercise of Authority",
-      "link": "https://www.federalregister.gov/documents/2026/07/30/2026-15458/civil-money-penalty-for-actions-in-contempt-of-an-immigration-judges-proper-exercise-of-authority",
-      "summary": "This notice of proposed rulemaking (\"NPRM\") would implement a provision of the Immigration and Nationality Act (\"INA\" or \"the Act\") that authorizes Immigration Judges, under regulations prescribed by the Attorney General, to sanction by civil money penalty any action (or inaction) in contempt of the proper exercise of their authority by certain individuals. The rule would: define the scope of the contempt authority; provide procedures for contempt findings, penalty determinations, and penalty payment; establish an appellate process; and implement oversight of the use of contempt authority. The",
-      "published": "2026-07-30",
-      "source": "Federal Register",
-      "doc_type": "Proposed Rule"
-    },
-    {
-      "title": "Agency Information Collection Activities; Submission for OMB Review; Comment Request; Attestation for Employers Seeking To Employ H-2B Nonimmigrant Workers Under Section 105 of Division G, Title I of the Further Consolidated Appropriations Act, 2024, Public Law 118-47, as Extended by Public Law 119-37",
-      "link": "https://www.federalregister.gov/documents/2026/07/30/2026-15424/agency-information-collection-activities-submission-for-omb-review-comment-request-attestation-for",
-      "summary": "The Department of Labor (DOL) is submitting this Employment and Training Administration (ETA)-sponsored information collection request (ICR) to the Office of Management and Budget (OMB) for review and approval in accordance with the Paperwork Reduction Act of 1995 (PRA). Public comments on the ICR are invited.",
-      "published": "2026-07-30",
-      "source": "Federal Register",
-      "doc_type": "Notice"
     }
   ]
 }
