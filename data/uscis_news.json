@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-08-17T08:46:49.141808+00:00",
-  "count": 2,
+  "fetched_at": "2026-08-19T08:40:27.985865+00:00",
+  "count": 3,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -22,6 +22,14 @@
       "summary": "<p>By the authority vested in me as President by the Constitution and the laws of the United States of America, it&#160;is&#160;hereby ordered: Section 1.\u00a0 Purpose. \u00a0The privilege of United States citizenship remains a priceless and profound gift. \u00a0Since my first day in office, my Administration has guarded against the risks posed by malign foreign actors [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/presidential-actions/2026/08/continuing-to-protect-the-meaning-and-value-of-american-citizenship/\">Continuing to Protect the Meaning and Value of American Citizenship</a> appeared ",
       "published": "Thu, 06 Aug 2026 21:08:24 +0000",
       "source": "White House"
+    },
+    {
+      "title": "Notification of the Removal of Conditions of Entry on Vessels Arriving From Nigeria",
+      "link": "https://www.federalregister.gov/documents/2026/08/19/2026-16868/notification-of-the-removal-of-conditions-of-entry-on-vessels-arriving-from-nigeria",
+      "summary": "The U.S. Coast Guard announces that it is removing the Federal Republic of Nigeria from the Port Security Advisory.",
+      "published": "2026-08-19",
+      "source": "Federal Register",
+      "doc_type": "Notice"
     }
   ]
 }
