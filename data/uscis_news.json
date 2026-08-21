@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-08-19T08:40:27.985865+00:00",
-  "count": 3,
+  "fetched_at": "2026-08-21T08:43:48.078969+00:00",
+  "count": 2,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -10,13 +10,6 @@
   ],
   "items": [
     {
-      "title": "Fact Sheet: President Donald J. Trump Ends Birth Tourism and Protects the Meaning and Value of American Citizenship",
-      "link": "https://www.whitehouse.gov/fact-sheets/2026/08/fact-sheet-president-donald-j-trump-ends-birth-tourism-and-protects-the-meaning-and-value-of-american-citizenship/",
-      "summary": "<p>SAFEGUARDING AMERICAN CITIZENSHIP AND ENDING BIRTH TOURISM:&#160;Today, President Donald J. Trump signed two Executive Orders to continue to protect the meaning and value of American citizenship after&#160;Trump v. Barbara.&#160;&#160; PROTECTING THE VALUE OF AMERICAN CITIZENSHIP:&#160;President Trump recognizes that the privilege of United States citizenship is a priceless and profound gift.&#160;&#160; PUTTING AMERICANS FIRST AND RESTORING [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/fact-sheets/2026/08/fact-sheet-president-donald-j-trump-ends-birth-tourism-and-protects-t",
-      "published": "Thu, 06 Aug 2026 21:11:38 +0000",
-      "source": "White House"
-    },
-    {
       "title": "Continuing to Protect the Meaning and Value of American Citizenship",
       "link": "https://www.whitehouse.gov/presidential-actions/2026/08/continuing-to-protect-the-meaning-and-value-of-american-citizenship/",
       "summary": "<p>By the authority vested in me as President by the Constitution and the laws of the United States of America, it&#160;is&#160;hereby ordered: Section 1.\u00a0 Purpose. \u00a0The privilege of United States citizenship remains a priceless and profound gift. \u00a0Since my first day in office, my Administration has guarded against the risks posed by malign foreign actors [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/presidential-actions/2026/08/continuing-to-protect-the-meaning-and-value-of-american-citizenship/\">Continuing to Protect the Meaning and Value of American Citizenship</a> appeared ",
@@ -24,12 +17,12 @@
       "source": "White House"
     },
     {
-      "title": "Notification of the Removal of Conditions of Entry on Vessels Arriving From Nigeria",
-      "link": "https://www.federalregister.gov/documents/2026/08/19/2026-16868/notification-of-the-removal-of-conditions-of-entry-on-vessels-arriving-from-nigeria",
-      "summary": "The U.S. Coast Guard announces that it is removing the Federal Republic of Nigeria from the Port Security Advisory.",
-      "published": "2026-08-19",
+      "title": "Rescission of Executive Order 11246 Implementing Regulations",
+      "link": "https://www.federalregister.gov/documents/2026/08/21/2026-17114/rescission-of-executive-order-11246-implementing-regulations",
+      "summary": "On January 21, 2025, President Trump issued Executive Order 14173, \"Ending Illegal Discrimination and Restoring Merit-Based Opportunity,\" which revoked Executive Order 11246. Accordingly, the U.S. Department of Labor publishes this final rule to rescind the implementing regulations for Executive Order 11246.",
+      "published": "2026-08-21",
       "source": "Federal Register",
-      "doc_type": "Notice"
+      "doc_type": "Rule"
     }
   ]
 }
