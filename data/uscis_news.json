@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-08-25T08:46:22.846609+00:00",
-  "count": 3,
+  "fetched_at": "2026-08-27T18:57:31.096429+00:00",
+  "count": 2,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -23,14 +23,6 @@
       "published": "2026-08-25",
       "source": "Federal Register",
       "doc_type": "Proposed Rule"
-    },
-    {
-      "title": "Rescission of Executive Order 11246 Implementing Regulations",
-      "link": "https://www.federalregister.gov/documents/2026/08/21/2026-17114/rescission-of-executive-order-11246-implementing-regulations",
-      "summary": "On January 21, 2025, President Trump issued Executive Order 14173, \"Ending Illegal Discrimination and Restoring Merit-Based Opportunity,\" which revoked Executive Order 11246. Accordingly, the U.S. Department of Labor publishes this final rule to rescind the implementing regulations for Executive Order 11246.",
-      "published": "2026-08-21",
-      "source": "Federal Register",
-      "doc_type": "Rule"
     }
   ]
 }
