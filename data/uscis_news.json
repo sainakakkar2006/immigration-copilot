@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-08-31T15:58:17.788523+00:00",
-  "count": 6,
+  "fetched_at": "2026-09-01T13:16:02.091676+00:00",
+  "count": 3,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -24,35 +24,12 @@
       "source": "White House"
     },
     {
-      "title": "Statement from Assistant Secretary Dylan Johnson on Revoking Visa from Iraqi National\u00a0on FBI Terror Watchlist\u00a0Given Award by Previous Administration",
-      "link": "https://www.state.gov/releases/office-of-the-spokesperson/2026/08/statement-from-assistant-secretary-dylan-johnson-on-revoking-visa-from-iraqi-national-on-fbi-terror-watchlist-given-award-by-previous-administration/",
-      "summary": "<p>Office of the Spokesperson</p>\n\n<section class=\"wp-block-default-hero-container wp-block-default-hero-container--no-featured-content \">\n\n\t<div class=\"wp-block-default-hero module featured-content page-header \">\n\n\t\t\n\t\t<div class=\"row bc_row\">\n\n\t\t\t\n\n\t\t</div>\n\n\t\t<div class=\"row\" dir=\"ltr\">\n\n\t\t\t<div class=\"featured-content__copy\">\n\n\t\t\t\t\n\t\t\t\t<h1 class=\"featured-content__headline stars-above\">\n\n\t\t\t\t\t\n\t\t\t\t\t\tStatement from Assistant Secretary Dylan Johnson on Revoking Visa from Iraqi National\u00a0on FBI Terror Watchlist\u00a0Given Award by Previous Administration\n\t\t\t\t\t\n\t\t\t\t</h1>\n\n\t\t\t\t<div class=\"article-met",
-      "published": "Fri, 28 Aug 2026 16:49:48 +0000",
-      "source": "State Department"
-    },
-    {
       "title": "Affirmative Asylum Referrals Without Interview",
       "link": "https://www.federalregister.gov/documents/2026/08/31/C3-2026-15190/affirmative-asylum-referrals-without-interview",
       "summary": "",
       "published": "2026-08-31",
       "source": "Federal Register",
       "doc_type": "Rule"
-    },
-    {
-      "title": "Passports: Expanding Online Passport Renewal Overseas",
-      "link": "https://www.federalregister.gov/documents/2026/08/28/2026-17655/passports-expanding-online-passport-renewal-overseas",
-      "summary": "The Department proposes to amend 22 CFR 51.21 by consolidating requirements for persons applying by mail and online in the United States and overseas. This proposed change includes expanding online passport application availability to qualified applicants located in foreign countries. In addition, the Department is proposing to remove the requirement that an applicant's most recently issued passport must have a year or less of remaining validity to qualify to submit an online passport application. Finally, the Department is proposing technical corrections to 51.8(b) to change \"on-line\" to read",
-      "published": "2026-08-28",
-      "source": "Federal Register",
-      "doc_type": "Proposed Rule"
-    },
-    {
-      "title": "30-Day Notice of Proposed Information Collection: Annual Report-J-NONIMMIGRANT Exchange Visitor Program",
-      "link": "https://www.federalregister.gov/documents/2026/08/28/2026-17578/30-day-notice-of-proposed-information-collection-annual-report-j-nonimmigrant-exchange-visitor",
-      "summary": "The Department of State has submitted the information collection described below to the Office of Management and Budget (OMB) for approval. In accordance with the Paperwork Reduction Act of 1995 we are requesting comments on this collection from all interested individuals and organizations. The purpose of this Notice is to allow 30 days for public comment.",
-      "published": "2026-08-28",
-      "source": "Federal Register",
-      "doc_type": "Notice"
     }
   ]
 }
