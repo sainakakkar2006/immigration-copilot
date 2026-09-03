@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-09-01T13:16:02.091676+00:00",
-  "count": 3,
+  "fetched_at": "2026-09-03T12:41:39.113206+00:00",
+  "count": 2,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -22,14 +22,6 @@
       "summary": "<p>By the authority vested in me as President by the Constitution and the laws of the United States of America, it&#160;is&#160;hereby ordered: Section 1.\u00a0 Purpose. \u00a0The privilege of United States citizenship remains a priceless and profound gift. \u00a0Since my first day in office, my Administration has guarded against the risks posed by malign foreign actors [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/presidential-actions/2026/08/continuing-to-protect-the-meaning-and-value-of-american-citizenship/\">Continuing to Protect the Meaning and Value of American Citizenship</a> appeared ",
       "published": "Thu, 06 Aug 2026 21:08:24 +0000",
       "source": "White House"
-    },
-    {
-      "title": "Affirmative Asylum Referrals Without Interview",
-      "link": "https://www.federalregister.gov/documents/2026/08/31/C3-2026-15190/affirmative-asylum-referrals-without-interview",
-      "summary": "",
-      "published": "2026-08-31",
-      "source": "Federal Register",
-      "doc_type": "Rule"
     }
   ]
 }
