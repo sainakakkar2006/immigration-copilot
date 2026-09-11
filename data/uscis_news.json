@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-09T12:48:49.785174+00:00",
+  "fetched_at": "2026-09-11T12:41:33.852764+00:00",
   "count": 2,
   "sources": [
     "USCIS.gov",
@@ -17,12 +17,12 @@
       "source": "White House"
     },
     {
-      "title": "Registration of Lawful Permanent Residence for Children Born to Foreign Government Employees in the United States",
-      "link": "https://www.federalregister.gov/documents/2026/09/09/2026-18345/registration-of-lawful-permanent-residence-for-children-born-to-foreign-government-employees-in-the",
-      "summary": "Department of Homeland Security (DHS), U.S. Citizenship and Immigration Services (USCIS) is amending its regulations to permit children born in the United States to \"foreign government employees\" who are not U.S. citizens to register for permanent residence. DHS is also making corresponding changes to Form I-485, Application to Register Permanent Residence or Adjust Status and Form G-325R, Biographic Information (Registration).",
-      "published": "2026-09-09",
+      "title": "Fee for Certain H-1B Petitions",
+      "link": "https://www.federalregister.gov/documents/2026/09/10/C1-2026-17324/fee-for-certain-h-1b-petitions",
+      "summary": "",
+      "published": "2026-09-10",
       "source": "Federal Register",
-      "doc_type": "Rule"
+      "doc_type": "Proposed Rule"
     }
   ]
 }
