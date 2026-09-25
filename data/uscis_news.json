@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-09-23T13:27:27.526844+00:00",
-  "count": 6,
+  "fetched_at": "2026-09-25T13:24:21.899455+00:00",
+  "count": 5,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -38,20 +38,11 @@
       "source": "White House"
     },
     {
-      "title": "60-Day Notice of Proposed Information Collection: DS-864E, Request for Exemption From Immigrant Visa Applicant's Affidavit of Support",
-      "link": "https://www.federalregister.gov/documents/2026/09/18/2026-19142/60-day-notice-of-proposed-information-collection-ds-864e-request-for-exemption-from-immigrant-visa",
-      "summary": "The Department of State is seeking Office of Management and Budget (OMB) approval for the information collection described below. In accordance with the Paperwork Reduction Act of 1995, we are requesting comments on this collection from all interested individuals and organizations. The purpose of this notice is to allow 60 days for public comment preceding submission of the collection to OMB.",
-      "published": "2026-09-18",
-      "source": "Federal Register",
-      "doc_type": "Notice"
-    },
-    {
-      "title": "Agency Information Collection Activities: Extension, Without Change, of a Currently Approved Collection: Immigrant Petition by Standalone Investor, Immigrant Petition by Regional Center Investor; Correction",
-      "link": "https://www.federalregister.gov/documents/2026/09/18/2026-19136/agency-information-collection-activities-extension-without-change-of-a-currently-approved-collection",
-      "summary": "",
-      "published": "2026-09-18",
-      "source": "Federal Register",
-      "doc_type": "Notice"
+      "title": "Protecting the Sanctity of U.S. Citizenship: A New Visa Restriction Policy for Those Who Engage in or Facilitate Birth Tourism",
+      "link": "https://www.state.gov/releases/office-of-the-spokesman/2026/09/protecting-the-sanctity-of-u-s-citizenshipa-new-visa-restriction-policy-for-those-who-engage-in-or-facilitate-birth-tourism/",
+      "summary": "<p>Marco Rubio, Secretary of State</p>\n\n<section class=\"wp-block-default-hero-container wp-block-default-hero-container--no-featured-content \">\n\n\t<div class=\"wp-block-default-hero module featured-content page-header \">\n\n\t\t\n\t\t<div class=\"row bc_row\">\n\n\t\t\t\n\n\t\t</div>\n\n\t\t<div class=\"row\" dir=\"ltr\">\n\n\t\t\t<div class=\"featured-content__copy\">\n\n\t\t\t\t\n\t\t\t\t<h1 class=\"featured-content__headline stars-above\">\n\n\t\t\t\t\t\n\t\t\t\t\t\tProtecting the Sanctity of U.S. Citizenship: A New Visa Restriction Policy for Those Who Engage in or Facilitate Birth Tourism\n\t\t\t\t\t\n\t\t\t\t</h1>\n\n\t\t\t\t<div class=\"article-meta\">\n\n\t\t\t\t\t<!-- ge",
+      "published": "Wed, 23 Sep 2026 17:11:09 +0000",
+      "source": "State Department"
     }
   ]
 }
