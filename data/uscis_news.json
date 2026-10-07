@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-10-05T16:56:19.463002+00:00",
-  "count": 7,
+  "fetched_at": "2026-10-07T15:18:47.502506+00:00",
+  "count": 6,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -31,6 +31,14 @@
       "source": "White House"
     },
     {
+      "title": "Title: Determinations Pursuant to Section 2(b)(2) of the Migration and Refugee Assistance Act of 1962",
+      "link": "https://www.federalregister.gov/documents/2026/10/07/2026-20550/title-determinations-pursuant-to-section-2b2-of-the-migration-and-refugee-assistance-act-of-1962",
+      "summary": "",
+      "published": "2026-10-07",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    },
+    {
       "title": "Determination Pursuant to Section 102 of the Illegal Immigration Reform and Immigrant Responsibility Act of 1996, as Amended",
       "link": "https://www.federalregister.gov/documents/2026/10/02/2026-20233/determination-pursuant-to-section-102-of-the-illegal-immigration-reform-and-immigrant-responsibility",
       "summary": "The Secretary of Homeland Security has determined, pursuant to law, that it is necessary to waive certain laws, regulations, and other legal requirements in order to ensure the expeditious construction of barriers and roads in the vicinity of the international land border in the state of New Mexico.",
@@ -45,22 +53,6 @@
       "published": "2026-10-01",
       "source": "Federal Register",
       "doc_type": "Notice"
-    },
-    {
-      "title": "Certain DHS Immigration-Related Fees Required by HR-1: Fiscal Year 2027 Adjustments for Inflation",
-      "link": "https://www.federalregister.gov/documents/2026/10/01/2026-20186/certain-dhs-immigration-related-fees-required-by-hr-1-fiscal-year-2027-adjustments-for-inflation",
-      "summary": "The Department of Homeland Security (DHS) is announcing Fiscal Year (FY) 2027 inflationary adjustments for two of the immigration enforcement-related fees established by the One Big Beautiful Bill Act (HR-1). HR-1 requires that DHS annually adjust certain immigration enforcement-related fees for inflation. The adjusted fee amounts for FY 2027 for aliens ordered removed in absentia who are subsequently arrested and inadmissible aliens apprehended between ports of entry are $5,300. On October 16, 2026, DHS will begin assessing and collecting these new amounts.",
-      "published": "2026-10-01",
-      "source": "Federal Register",
-      "doc_type": "Notice"
-    },
-    {
-      "title": "U.S. Citizenship and Immigration Services Employment-Based Immigrant Visa, Fifth Preference (EB-5) Fee Rule",
-      "link": "https://www.federalregister.gov/documents/2026/09/30/2026-20016/us-citizenship-and-immigration-services-employment-based-immigrant-visa-fifth-preference-eb-5-fee",
-      "summary": "This final rule adjusts the Employment-Based Immigration, Fifth Preference (EB-5) immigration benefit request fees charged by U.S. Citizenship and Immigration Services (USCIS). It also codifies provisions of the EB-5 Reform and Integrity Act of 2022, implements new statutory requirements, and addresses public comments received on the proposed fee rule published on October 23, 2025.",
-      "published": "2026-09-30",
-      "source": "Federal Register",
-      "doc_type": "Rule"
     }
   ]
 }
