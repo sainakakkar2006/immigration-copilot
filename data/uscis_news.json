@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-10-07T15:18:47.502506+00:00",
-  "count": 6,
+  "fetched_at": "2026-10-09T15:05:11.554860+00:00",
+  "count": 7,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -9,6 +9,13 @@
     "Federal Register"
   ],
   "items": [
+    {
+      "title": "Lower Taxes, Safer Streets, Stronger Border: President Trump\u2019s Texas Record",
+      "link": "https://www.whitehouse.gov/releases/2026/10/lower-taxes-safer-streets-stronger-border-president-trumps-texas-record/",
+      "summary": "<p>Today, President Donald J. Trump returns to Texas with a record of results: historic tax relief, the most secure border in a generation, safer streets, and a surge of new private investment creating jobs across the Lone Star State. Tax Relief for Texas Workers, Families, Seniors President Trump\u2019s Working Families Tax Cuts is putting money [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/releases/2026/10/lower-taxes-safer-streets-stronger-border-president-trumps-texas-record/\">Lower Taxes, Safer Streets, Stronger Border: President Trump\u2019s Texas Record</a> appeared first on <a hr",
+      "published": "Wed, 07 Oct 2026 16:38:18 +0000",
+      "source": "White House"
+    },
     {
       "title": "Enhancing Program Integrity and Integrity and Interagency Coordination in the Administration of the H-1B Nonimmigrant Visa Program",
       "link": "https://www.whitehouse.gov/presidential-actions/2026/09/enhancing-program-integrity-and-integrity-and-interagency-coordination-in-the-administration-of-the-h-1b-nonimmigrant-visa-program/",
@@ -31,6 +38,14 @@
       "source": "White House"
     },
     {
+      "title": "Minimum Wage for Federal Contracts Covered by Executive Order 13658, Notice of Rate Change in Effect for 2027",
+      "link": "https://www.federalregister.gov/documents/2026/10/08/2026-20646/minimum-wage-for-federal-contracts-covered-by-executive-order-13658-notice-of-rate-change-in-effect",
+      "summary": "The Wage and Hour Division (WHD or Division) of the U.S. Department of Labor (the Department) is announcing the applicable minimum wage rate for workers performing work on or in connection with federal contracts covered by Executive Order 13658, Establishing a Minimum Wage for Contractors (the Executive Order or the order), beginning January 6, 2027. The rates announced in this notice apply to certain types of federal contracts entered into between January 1, 2015, and January 29, 2022, that were not renewed or extended (pursuant to an exercised option or otherwise) on or after January 30, 202",
+      "published": "2026-10-08",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    },
+    {
       "title": "Title: Determinations Pursuant to Section 2(b)(2) of the Migration and Refugee Assistance Act of 1962",
       "link": "https://www.federalregister.gov/documents/2026/10/07/2026-20550/title-determinations-pursuant-to-section-2b2-of-the-migration-and-refugee-assistance-act-of-1962",
       "summary": "",
@@ -43,14 +58,6 @@
       "link": "https://www.federalregister.gov/documents/2026/10/02/2026-20233/determination-pursuant-to-section-102-of-the-illegal-immigration-reform-and-immigrant-responsibility",
       "summary": "The Secretary of Homeland Security has determined, pursuant to law, that it is necessary to waive certain laws, regulations, and other legal requirements in order to ensure the expeditious construction of barriers and roads in the vicinity of the international land border in the state of New Mexico.",
       "published": "2026-10-02",
-      "source": "Federal Register",
-      "doc_type": "Notice"
-    },
-    {
-      "title": "Fiscal Year 2027 Inflation Adjustment to H.R. 1 Immigration Fees",
-      "link": "https://www.federalregister.gov/documents/2026/10/01/2026-20187/fiscal-year-2027-inflation-adjustment-to-hr-1-immigration-fees",
-      "summary": "U.S. Citizenship and Immigration Services (USCIS), a component of the Department of Homeland Security (DHS), is announcing inflationary adjustments to immigration-related fees administered by USCIS under the One Big Beautiful Bill Act (H.R. 1) for Fiscal Year (FY) 2027. H.R. 1 mandates that USCIS adjust the H.R. 1 fees annually. This notice outlines the adjusted fees and their effective date.",
-      "published": "2026-10-01",
       "source": "Federal Register",
       "doc_type": "Notice"
     }
