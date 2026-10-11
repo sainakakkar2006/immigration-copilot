@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-10-09T15:05:11.554860+00:00",
-  "count": 7,
+  "fetched_at": "2026-10-11T14:45:36.134892+00:00",
+  "count": 6,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -50,14 +50,6 @@
       "link": "https://www.federalregister.gov/documents/2026/10/07/2026-20550/title-determinations-pursuant-to-section-2b2-of-the-migration-and-refugee-assistance-act-of-1962",
       "summary": "",
       "published": "2026-10-07",
-      "source": "Federal Register",
-      "doc_type": "Notice"
-    },
-    {
-      "title": "Determination Pursuant to Section 102 of the Illegal Immigration Reform and Immigrant Responsibility Act of 1996, as Amended",
-      "link": "https://www.federalregister.gov/documents/2026/10/02/2026-20233/determination-pursuant-to-section-102-of-the-illegal-immigration-reform-and-immigrant-responsibility",
-      "summary": "The Secretary of Homeland Security has determined, pursuant to law, that it is necessary to waive certain laws, regulations, and other legal requirements in order to ensure the expeditious construction of barriers and roads in the vicinity of the international land border in the state of New Mexico.",
-      "published": "2026-10-02",
       "source": "Federal Register",
       "doc_type": "Notice"
     }
