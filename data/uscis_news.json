@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-10-15T13:10:59.773446+00:00",
-  "count": 10,
+  "fetched_at": "2026-10-17T12:01:47.408111+00:00",
+  "count": 6,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -45,42 +45,10 @@
       "source": "White House"
     },
     {
-      "title": "Imposition and Collection of Civil Penalties for Certain Immigration-Related Violations",
-      "link": "https://www.federalregister.gov/documents/2026/10/14/2026-21024/imposition-and-collection-of-civil-penalties-for-certain-immigration-related-violations",
-      "summary": "On June 27, 2025, the Departments issued an interim final rule (\"IFR\") to streamline assessment of civil penalties under the Immigration and Nationality Act (\"INA\") for aliens who fail to depart during a voluntary departure period, willfully fail or refuse to depart after a final removal order and certain other proscribed activities, or are apprehended while improperly entering or attempting to enter the United States. This final rule addresses comments and finalizes the IFR with one change: it permits acceptance of a late-filed appeal based on documented mail delivery delays that ICE finds we",
-      "published": "2026-10-14",
-      "source": "Federal Register",
-      "doc_type": "Rule"
-    },
-    {
-      "title": "Removing 30-Day Refugee Termination Notice",
-      "link": "https://www.federalregister.gov/documents/2026/10/14/2026-20956/removing-30-day-refugee-termination-notice",
-      "summary": "This interim final rule (IFR) amends Department of Homeland Security (DHS) regulations to expedite termination of refugee status when DHS determines an alien was not a refugee within the meaning of section 101(a)(42) of the Immigration and Nationality Act at the time of admission to the United States. The response period to a Notice of Intent to Terminate (NOIT) is reduced from thirty to ten days. These changes aim to restore integrity to the immigration system, mitigate risks to national security and public safety, and prevent fraud and exploitation.",
-      "published": "2026-10-14",
-      "source": "Federal Register",
-      "doc_type": "Rule"
-    },
-    {
-      "title": "Removal of Automatic Extensions for Certain Employment Authorization Documents",
-      "link": "https://www.federalregister.gov/documents/2026/10/14/2026-20955/removal-of-automatic-extensions-for-certain-employment-authorization-documents",
-      "summary": "On October 30, 2025, DHS published an interim final rule (IFR) that amended DHS regulations to end the practice of automatically extending the validity of employment authorization documents (Forms I- 766 or EADs) for aliens who have timely filed an application to renew their EAD in certain employment authorization categories. This final rule responds to comments received on the IFR and reaffirms and finalizes the provisions of the IFR. Ending the automatic extension of EADs enhances benefit integrity and prioritizes the proper vetting and screening of aliens before granting a new period of emp",
-      "published": "2026-10-14",
-      "source": "Federal Register",
-      "doc_type": "Rule"
-    },
-    {
-      "title": "Removing Deference to Prior USCIS Determinations of Eligibility",
-      "link": "https://www.federalregister.gov/documents/2026/10/14/2026-20941/removing-deference-to-prior-uscis-determinations-of-eligibility",
-      "summary": "The U.S. Department of Homeland Security (DHS), U.S. Citizenship and Immigration Services (USCIS), proposes to remove 8 CFR 214.1(c)(5), which generally provides that USCIS gives deference to a prior approval involving the same facts when adjudicating a request to extend a petition for an alien's employment or stay. This change would better align DHS regulations with the statute, which places the burden of proving eligibility for all immigration benefits on the petitioner, applicant, or beneficiary; strengthen adjudicatory review; and support agency priorities to improve the integrity of the i",
-      "published": "2026-10-14",
-      "source": "Federal Register",
-      "doc_type": "Proposed Rule"
-    },
-    {
-      "title": "Minimum Wage for Federal Contracts Covered by Executive Order 13658, Notice of Rate Change in Effect for 2027",
-      "link": "https://www.federalregister.gov/documents/2026/10/08/2026-20646/minimum-wage-for-federal-contracts-covered-by-executive-order-13658-notice-of-rate-change-in-effect",
-      "summary": "The Wage and Hour Division (WHD or Division) of the U.S. Department of Labor (the Department) is announcing the applicable minimum wage rate for workers performing work on or in connection with federal contracts covered by Executive Order 13658, Establishing a Minimum Wage for Contractors (the Executive Order or the order), beginning January 6, 2027. The rates announced in this notice apply to certain types of federal contracts entered into between January 1, 2015, and January 29, 2022, that were not renewed or extended (pursuant to an exercised option or otherwise) on or after January 30, 202",
-      "published": "2026-10-08",
+      "title": "Petition for Modification of Application of Existing Mandatory Safety Standards",
+      "link": "https://www.federalregister.gov/documents/2026/10/16/2026-21175/petition-for-modification-of-application-of-existing-mandatory-safety-standards",
+      "summary": "This notice is a summary of a petition for modification submitted to the Mine Safety and Health Administration (MSHA) by Panther Creek Mining, LLC.",
+      "published": "2026-10-16",
       "source": "Federal Register",
       "doc_type": "Notice"
     }
