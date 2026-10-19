@@ -1,11 +1,11 @@
-# Deploy to Streamlit Community Cloud — Free, No Billing
+# Deploy to Streamlit Community Cloud: Free, No Billing
 
 This takes about 10 minutes and gives you a live public URL like:
 `https://immigration-copilot.streamlit.app`
 
 ---
 
-## Step 1 — Push the code to GitHub
+## Step 1: Push the code to GitHub
 
 If you don't have git set up, open Terminal and run:
 
@@ -31,7 +31,7 @@ git push -u origin main
 
 ---
 
-## Step 2 — Deploy on Streamlit Community Cloud
+## Step 2: Deploy on Streamlit Community Cloud
 
 1. Go to: **https://share.streamlit.io**
 2. Sign up / log in with GitHub
@@ -52,7 +52,7 @@ You'll get a public URL you can share with anyone.
 
 ---
 
-## Step 3 — Share the link
+## Step 3: Share the link
 
 Your app is now live 24/7 for free. Share the URL on:
 - Reddit (r/immigration, r/USCIS, r/f1visa)

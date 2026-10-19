@@ -17,7 +17,7 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------------------------------
-# Languages — the most common languages spoken by US immigrant communities
+# Languages, the most common languages spoken by US immigrant communities
 # ---------------------------------------------------------------------------
 LANGUAGES = {
     "English": "English",
@@ -56,11 +56,11 @@ T_EN = {
     "footer_made": "Made by Saina and Arsh, two students whose families have been through this system.",
     "footer_sources": "Everything is checked against USCIS.gov and the Federal Register. This is not a law firm.",
     "footer_feedback": "Spotted a mistake? Tell us on GitHub and we'll fix it.",
-    "news_fr_heading": "Recent regulatory activity — Federal Register",
+    "news_fr_heading": "Recent regulatory activity, Federal Register",
     "news_fr_unavailable": "Federal Register data unavailable right now.",
     "priority": "priority",
     "situation_heading": "How does the current situation affect you?",
-    "situation_intro": "Describe your visa status and what you're planning to do. You can also upload a document — even a phone photo — and we'll read your specific details from it.",
+    "situation_intro": "Describe your visa status and what you're planning to do. You can also upload a document (even a phone photo) and we'll read your specific details from it.",
     "situation_status_label": "Your current status",
     "situation_country_label": "Country of birth",
     "situation_country_ph": "e.g. India, Mexico, China",
@@ -117,7 +117,7 @@ T_EN = {
     "checklist_notes_label": "Anything we should know",
     "checklist_notes_ph": "Previous visa denials, criminal history, other complicating factors",
     "checklist_button": "Generate checklist",
-    "checklist_country_required": "Country of birth is required — it affects your priority date and waiting time.",
+    "checklist_country_required": "Country of birth is required. It affects your priority date and waiting time.",
     "checklist_spinner": "Building your checklist...",
     "checklist_aware": "Things to be aware of in your case",
     "checklist_forms": "Forms to file",
@@ -130,7 +130,7 @@ T_EN = {
     "checklist_cover_label": "Your cover letter",
     "checklist_next": "Next steps",
     "checklist_download": "Download my checklist",
-    "checklist_disclaimer": "This checklist is based on current USCIS guidelines but is not legal advice. If your case has complications — prior deportations, criminal history, long overstays — consult an attorney.",
+    "checklist_disclaimer": "This checklist is based on current USCIS guidelines but is not legal advice. If your case has complications (prior deportations, criminal history, long overstays), consult an attorney.",
     "settings_language": "Language",
     "settings_text_size": "Text size",
     "text_normal": "Normal",
@@ -143,7 +143,7 @@ T_EN = {
 }
 
 # ---------------------------------------------------------------------------
-# Settings row — language and text size (rendered before everything else)
+# Settings row, language and text size (rendered before everything else)
 # ---------------------------------------------------------------------------
 set_l, set_m, set_r = st.columns([2, 2, 3])
 with set_l:
@@ -305,7 +305,7 @@ li {{ line-height: 1.65; }}
     line-height: 1.6;
 }}
 
-/* Priority pills — sentence case reads calmer than shouting caps */
+/* Priority pills, sentence case reads calmer than shouting caps */
 .priority-high, .priority-medium, .priority-low {{
     display: inline-block;
     padding: 0.12rem 0.55rem;
@@ -535,7 +535,7 @@ def lang_rule(lang):
 
 
 # ---------------------------------------------------------------------------
-# Interface translation — one Gemini call per language, cached for everyone
+# Interface translation, one Gemini call per language, cached for everyone
 # ---------------------------------------------------------------------------
 @st.cache_data(ttl=None, show_spinner=False)
 def translate_ui(lang):
@@ -631,7 +631,7 @@ def enrich_news(news_items_json, topic_filter, lang):
         keywords = topic_keywords.get(topic_filter, [])
         specific = [i for i in items if any(k in (i.get("title", "") + i.get("summary", "")).lower() for k in keywords)]
         if not specific:
-            # Nothing in the file matches this topic — let the live-search
+            # Nothing in the file matches this topic, let the live-search
             # fallback supply topic-specific news instead of showing
             # the same unrelated items for every topic.
             return []
@@ -649,7 +649,7 @@ Only skip items that are purely about DHS internal IT systems, staff bios, or to
 
 News items: {json.dumps(filtered[:8])}{topic_instruction}
 
-Priority rules — be conservative:
+Priority rules, be conservative:
 - "high": action needed now (imminent deadline, rule just took effect)
 - "medium": important to be aware of, no immediate action
 - "low": background context, long-term or unclear impact
@@ -660,7 +660,7 @@ Return a JSON array. Each object:
 - "link": same link as input
 - "published": same published date as input
 - "source": same source as input (e.g. "USCIS", "DHS", "White House")
-- "plain_summary": 2 plain sentences — what happened and who it affects
+- "plain_summary": 2 plain sentences, what happened and who it affects
 - "priority": "high" | "medium" | "low"
 - "affects": specific group (e.g. "H-1B holders", "all visa applicants", "asylum seekers")
 {lang_rule(lang)}"""
@@ -688,7 +688,7 @@ Return ONLY a JSON array of 5-7 items, no other text. Each object:
 - "title": clear, factual headline
 - "link": source URL you found
 - "published": date or period from the source
-- "plain_summary": 2 plain sentences — what it is and who it affects
+- "plain_summary": 2 plain sentences, what it is and who it affects
 - "priority": "high" | "medium" | "low"
 - "affects": specific group (e.g. "H-1B cap registrants", "F-1 OPT applicants")
 - "source": agency or publication name"""
@@ -715,7 +715,7 @@ List the most important things they should know that are still relevant and acti
 Rules:
 - Only include things that are factually accurate and still relevant to this specific topic
 - Do NOT include topics outside the focus area above
-- Do NOT invent specific dates — use "recent", "ongoing", or a year
+- Do NOT invent specific dates, use "recent", "ongoing", or a year
 - Most items should be "medium" priority. Only use "high" if action is genuinely needed now.
 - Write in plain English, two sentences per item. No hype.
 {lang_rule(lang)}
@@ -724,7 +724,7 @@ Return a JSON array of 5-7 items. Each object:
 - "title": clear, factual headline
 - "link": best official URL (uscis.gov, whitehouse.gov, dhs.gov, state.gov, federalregister.gov)
 - "published": time period ("recent", "ongoing")
-- "plain_summary": 2 plain sentences — what it is and who it affects
+- "plain_summary": 2 plain sentences, what it is and who it affects
 - "priority": "high" | "medium" | "low"
 - "affects": specific group (e.g. "H-1B cap registrants", "F-1 OPT applicants")
 - "source": agency (e.g. "USCIS", "White House", "DHS")"""
@@ -732,7 +732,7 @@ Return a JSON array of 5-7 items. Each object:
 
 
 # ---------------------------------------------------------------------------
-# Evergreen essentials — curated in code so every topic always has content.
+# Evergreen essentials, curated in code so every topic always has content.
 # These are stable rules from statute/regulation, not news; the AI never
 # generates them, only translates them.
 # ---------------------------------------------------------------------------
@@ -803,7 +803,7 @@ ESSENTIALS = {
          "link": "https://www.uscis.gov/i-131"},
     ],
     "Employment Green Cards": [
-        {"title": "Your priority date is your place in line — check it monthly",
+        {"title": "Your priority date is your place in line. Check it monthly",
          "summary": "The date your PERM or I-140 was filed is your priority date. Compare it against the monthly Visa Bulletin to know when you can file the final step.",
          "link": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"},
         {"title": "India and China face the longest EB-2/EB-3 backlogs",
@@ -858,7 +858,7 @@ tab_decode, tab1, tab2, tab_opt, tab3, tab4 = st.tabs([
 
 
 # ---------------------------------------------------------------------------
-# TAB — DECODE A LETTER (flagship: photo of a USCIS notice → plain answer)
+# TAB, DECODE A LETTER (flagship: photo of a USCIS notice → plain answer)
 # ---------------------------------------------------------------------------
 def parse_iso_date(value):
     try:
@@ -914,7 +914,7 @@ with tab_decode:
         else:
             with st.spinner(T["decode_spinner"]):
                 today = date.today().isoformat()
-                prompt = f"""You are helping someone who just received a letter from a US government immigration agency and is scared and confused. The letter is attached (it may be a photo taken with a phone — read it carefully even if tilted or blurry).
+                prompt = f"""You are helping someone who just received a letter from a US government immigration agency and is scared and confused. The letter is attached (it may be a photo taken with a phone, read it carefully even if tilted or blurry).
 
 Today's date is {today}.
 
@@ -922,14 +922,14 @@ Identify what this letter is and explain it at a 5th-grade reading level. Common
 
 Return ONLY this JSON:
 {{
-  "doc_type": "what kind of letter this is, in plain words (e.g. 'Request for Evidence — USCIS is asking you for more proof')",
+  "doc_type": "what kind of letter this is, in plain words (e.g. 'Request for Evidence, USCIS is asking you for more proof')",
   "agency": "who sent it (USCIS, ICE, EOIR, State Department)",
   "urgency": "high|medium|low",
   "what_it_means": "3-4 plain sentences: what happened, what the government wants, and what happens if you do nothing. Be honest but calm.",
   "details": [{{"field": "e.g. Receipt number, Form type, Case type, Office", "value": "exact value from the letter"}}],
   "key_dates": [{{"date": "YYYY-MM-DD", "what": "what must happen by this date, in plain words"}}],
   "actions": ["specific step 1", "specific step 2", "specific step 3"],
-  "needs_lawyer": true or false — true if this is a denial, NOID, NTA, court notice, or anything involving deportation or serious consequences
+  "needs_lawyer": true or false, true if this is a denial, NOID, NTA, court notice, or anything involving deportation or serious consequences
 }}
 
 Rules:
@@ -1012,7 +1012,7 @@ Rules:
 
 
 # ---------------------------------------------------------------------------
-# TAB 1 — NEWS (auto-loads, no button)
+# TAB 1, NEWS (auto-loads, no button)
 # ---------------------------------------------------------------------------
 with tab1:
     st.markdown(f"### {T['news_heading']}")
@@ -1065,7 +1065,7 @@ with tab1:
                 source_note = "Based on recent USCIS and policy updates"
 
         # If every AI path failed, still show the real government headlines
-        # (only for "All" — raw headlines aren't filtered by topic)
+        # (only for "All", raw headlines aren't filtered by topic)
         if not enriched and raw_items and topic_filter == "All":
             enriched = [{
                 "title": i.get("title", ""),
@@ -1101,7 +1101,7 @@ with tab1:
             </div>
             """, unsafe_allow_html=True)
 
-    # Evergreen essentials — always shown, whatever the news cycle is doing
+    # Evergreen essentials, always shown, whatever the news cycle is doing
     essentials = translated_essentials(topic_filter, LANG)
     if essentials:
         st.markdown("---")
@@ -1136,7 +1136,7 @@ with tab1:
 
 
 # ---------------------------------------------------------------------------
-# TAB 2 — YOUR SITUATION (Gemini reads PDFs and photos natively)
+# TAB 2, YOUR SITUATION (Gemini reads PDFs and photos natively)
 # ---------------------------------------------------------------------------
 with tab2:
     st.markdown(f"### {T['situation_heading']}")
@@ -1177,14 +1177,14 @@ with tab2:
 
     if st.button(T["situation_button"], type="primary"):
         with st.spinner(T["situation_spinner"]):
-            prompt = f"""You are an experienced US immigration advisor. Read this person's situation carefully and give them a clear, honest, direct assessment. Write like you're explaining this to a friend — no jargon, no filler phrases, no hedging beyond what's legally necessary.
+            prompt = f"""You are an experienced US immigration advisor. Read this person's situation carefully and give them a clear, honest, direct assessment. Write like you're explaining this to a friend, no jargon, no filler phrases, no hedging beyond what's legally necessary.
 
 Their situation:
 - Status: {visa_status}
 - Country of birth: {country or "not specified"}
 - What they told us: {concern or "no details provided"}
 
-{"They also attached a document (included with this message). Read it carefully — it may be an I-20, EAD card, visa stamp, approval notice, or a photo of one. Extract the specific facts: document type, names of forms, visa category, SEVIS number, program dates, expiration dates, receipt numbers. Use those real details in your assessment, and list what you found." if uploaded else ""}
+{"They also attached a document (included with this message). Read it carefully, it may be an I-20, EAD card, visa stamp, approval notice, or a photo of one. Extract the specific facts: document type, names of forms, visa category, SEVIS number, program dates, expiration dates, receipt numbers. Use those real details in your assessment, and list what you found." if uploaded else ""}
 
 Return ONLY this JSON:
 {{
@@ -1195,13 +1195,13 @@ Return ONLY this JSON:
   ],
   "what_to_do": ["specific action", "specific action", "specific action"],
   "watch_out_for": ["thing 1", "thing 2"],
-  "realistic_note": "one honest note about their situation — good or bad, just real",
+  "realistic_note": "one honest note about their situation, good or bad, just real",
   "deadlines": "any real deadlines or time-sensitive things they should know about",
   "official_resources": ["Form name or USCIS page title and URL"]
 }}
 
 If no document was attached, return an empty list for "document_details". Never invent document values.
-Country of birth matters for priority dates — call it out if India, Mexico, Philippines, or China.
+Country of birth matters for priority dates, call it out if India, Mexico, Philippines, or China.
 If they asked about H-1B and lost the lottery, give them real alternatives, not generic encouragement.{lang_rule(LANG)}"""
 
             try:
@@ -1286,16 +1286,16 @@ If they asked about H-1B and lost the lottery, give them real alternatives, not 
 
 
 # ---------------------------------------------------------------------------
-# TAB — OPT / STEM OPT DEADLINE CALCULATOR (deterministic date math)
+# TAB, OPT / STEM OPT DEADLINE CALCULATOR (deterministic date math)
 # ---------------------------------------------------------------------------
 def build_opt_deadlines(stage, key_date, stem_eligible):
-    """All rules computed in Python from USCIS regulations — no AI dates."""
+    """All rules computed in Python from USCIS regulations, no AI dates."""
     deadlines = []
     if stage == "student":
         program_end = key_date
         deadlines.append({
             "date": program_end - timedelta(days=90),
-            "what": "Earliest day USCIS can receive your OPT application (Form I-765) — 90 days before your program end date. Apply as early as you can.",
+            "what": "Earliest day USCIS can receive your OPT application (Form I-765), 90 days before your program end date. Apply as early as you can.",
             "key": "opt_window_open",
         })
         deadlines.append({
@@ -1318,7 +1318,7 @@ def build_opt_deadlines(stage, key_date, stem_eligible):
         opt_end = key_date
         deadlines.append({
             "date": opt_end - timedelta(days=90),
-            "what": "Earliest day to file your 24-month STEM OPT extension (Form I-765 with I-983 training plan) — 90 days before your OPT ends.",
+            "what": "Earliest day to file your 24-month STEM OPT extension (Form I-765 with I-983 training plan), 90 days before your OPT ends.",
             "key": "stem_window_open",
         })
         deadlines.append({
@@ -1328,7 +1328,7 @@ def build_opt_deadlines(stage, key_date, stem_eligible):
         })
         deadlines.append({
             "date": opt_end + timedelta(days=60),
-            "what": "End of your 60-day grace period if you do not file the STEM extension — leave the US, change status, or start a new program by this date.",
+            "what": "End of your 60-day grace period if you do not file the STEM extension, leave the US, change status, or start a new program by this date.",
             "key": "grace_end",
         })
     return sorted(deadlines, key=lambda d: d["date"])
@@ -1435,7 +1435,7 @@ with tab_opt:
 
 
 # ---------------------------------------------------------------------------
-# TAB 3 — GREEN CARD CHECKLIST
+# TAB 3, GREEN CARD CHECKLIST
 # ---------------------------------------------------------------------------
 with tab3:
     st.markdown(f"### {T['checklist_heading']}")
@@ -1526,7 +1526,7 @@ The cover letter must always stay in English (USCIS requires English), but every
 
         st.markdown(f"**{T['checklist_forms']}**")
         forms_html = " ".join([
-            f"<span class='form-tag'>{f.get('number', '')} — {f.get('name', '')} ({f.get('fee', '')}, {T['filed_by']} {f.get('filed_by', '')})</span>"
+            f"<span class='form-tag'>{f.get('number', '')}, {f.get('name', '')} ({f.get('fee', '')}, {T['filed_by']} {f.get('filed_by', '')})</span>"
             for f in result.get("forms", [])
         ])
         st.markdown(forms_html, unsafe_allow_html=True)
@@ -1557,7 +1557,7 @@ The cover letter must always stay in English (USCIS requires English), but every
             with st.expander(f"{cat} ({len(items)})", expanded=True):
                 for item in items:
                     req = item.get("required", False)
-                    label = f"{T['required']} — " if req else ""
+                    label = f"{T['required']}, " if req else ""
                     st.markdown(f"**{label}{item.get('item', '')}**")
                     st.markdown(
                         f"<span style='color:#4b5563; font-size:0.88rem;'>{item.get('why', '')}</span><br>"
@@ -1582,9 +1582,9 @@ The cover letter must always stay in English (USCIS requires English), but every
             </div>
             """, unsafe_allow_html=True)
 
-        # Downloadable copy — share it with a family member or attorney
+        # Downloadable copy, share it with a family member or attorney
         def checklist_as_text(r):
-            out = ["IMMIGRATION CO-PILOT — GREEN CARD CHECKLIST", f"Generated {date.today().strftime('%B %d, %Y')}", ""]
+            out = ["IMMIGRATION CO-PILOT, GREEN CARD CHECKLIST", f"Generated {date.today().strftime('%B %d, %Y')}", ""]
             if r.get("red_flags"):
                 out.append("THINGS TO BE AWARE OF:")
                 out += [f"  ! {f}" for f in r["red_flags"]]
@@ -1594,7 +1594,7 @@ The cover letter must always stay in English (USCIS requires English), but every
             out += ["", "DOCUMENT CHECKLIST:"]
             for item in r.get("checklist", []):
                 req = "[REQUIRED] " if item.get("required") else "[  ] "
-                out.append(f"  {req}{item.get('item', '')} — {item.get('why', '')}")
+                out.append(f"  {req}{item.get('item', '')}, {item.get('why', '')}")
             out += ["", f"TIMELINE: {r.get('timeline', '')}", "", f"INCOME: {r.get('income_note', '')}", "", "NEXT STEPS:"]
             out += [f"  {i}. {s}" for i, s in enumerate(r.get("next_steps", []), 1)]
             out += ["", "COVER LETTER:", "", r.get("cover_letter", ""), "",
@@ -1617,7 +1617,7 @@ The cover letter must always stay in English (USCIS requires English), but every
 
 
 # ---------------------------------------------------------------------------
-# TAB 4 — ABOUT
+# TAB 4, ABOUT
 # ---------------------------------------------------------------------------
 with tab4:
     st.markdown("### About this tool")
@@ -1648,7 +1648,7 @@ with tab4:
       and the [Federal Register API](https://www.federalregister.gov), refreshed every 48 hours.
       When those sources are quiet, the app searches the live web through Google and cites what it finds.
       The plain-English explanations are generated by AI based on the real headlines.
-    - The OPT deadline calculator computes dates directly from USCIS regulations in code —
+    - The OPT deadline calculator computes dates directly from USCIS regulations in code -
       the AI only explains them, it never invents them.
     - The green card checklist is built from USCIS form instructions and the Federal Poverty Guidelines.
       The AI generates it based on your specific case details.
@@ -1657,7 +1657,7 @@ with tab4:
 
     st.markdown("**Free legal help**")
     st.markdown("""
-    - [immigrationlawhelp.org](https://www.immigrationlawhelp.org) — directory of free and low-cost nonprofit legal services
+    - [immigrationlawhelp.org](https://www.immigrationlawhelp.org), directory of free and low-cost nonprofit legal services
     - [USCIS list of pro bono legal service providers](https://www.uscis.gov/citizenship/civic-integration/find-help-in-your-community)
     - [EOIR list of accredited representatives](https://www.justice.gov/eoir/recognized-organizations-and-accredited-representatives)
     """)
@@ -1665,7 +1665,7 @@ with tab4:
     st.markdown("**What this is not**")
     st.markdown("""
     This is not a law firm. It doesn't give legal advice. It doesn't create an attorney-client relationship.
-    If your case is complicated — prior violations, criminal history, multiple entries and exits, prior denials —
+    If your case is complicated, prior violations, criminal history, multiple entries and exits, prior denials -
     you should talk to a licensed immigration attorney.
     """)
 
@@ -1692,7 +1692,7 @@ with tab4:
 
 
 # ---------------------------------------------------------------------------
-# Footer — who made this, on every page
+# Footer, who made this, on every page
 # ---------------------------------------------------------------------------
 st.markdown(f"""
 <div class="site-footer">

@@ -19,7 +19,7 @@ HEADERS = {
 }
 
 # Trusted government RSS feeds covering immigration.
-# Verified working July 2026 — the old /rss/uscis-news.xml, dhs.gov/rss.xml,
+# Verified working July 2026, the old /rss/uscis-news.xml, dhs.gov/rss.xml,
 # and whitehouse.gov/feed/ paths all return 404 now.
 RSS_SOURCES = [
     {
@@ -40,7 +40,7 @@ RSS_SOURCES = [
     },
 ]
 
-# Federal Register API — immigration-related rules and notices
+# Federal Register API, immigration-related rules and notices
 FEDERAL_REGISTER_URL = "https://www.federalregister.gov/api/v1/documents.json"
 FEDERAL_REGISTER_PARAMS = {
     "per_page": 25,
@@ -65,7 +65,7 @@ IMMIGRATION_KEYWORDS = [
     "foreign national", "lawful permanent"
 ]
 
-# Topics that are definitively NOT immigration news — skip regardless of summary
+# Topics that are definitively NOT immigration news, skip regardless of summary
 EXCLUDE_KEYWORDS = [
     "fifa", "world cup", "soccer", "football", "olympics", "fema",
     "hurricane", "tornado", "flood", "wildfire", "earthquake", "disaster",
@@ -91,7 +91,7 @@ def is_recent(entry, max_age_days=120):
     """Some government feeds contain entries going back a decade."""
     parsed = entry.get("published_parsed") or entry.get("updated_parsed")
     if not parsed:
-        return True  # no date — keep, better than dropping fresh items
+        return True  # no date, keep, better than dropping fresh items
     entry_date = datetime(*parsed[:6], tzinfo=timezone.utc)
     return (datetime.now(timezone.utc) - entry_date).days <= max_age_days
 
@@ -155,7 +155,7 @@ def fetch_federal_register():
         data = resp.json()
         for doc in data.get("results", []):
             title = doc.get("title", "").strip()
-            # DHS includes the Coast Guard — drop "Safety Zone" style notices
+            # DHS includes the Coast Guard, drop "Safety Zone" style notices
             # by requiring an immigration keyword in the title
             if not is_immigration_related(title):
                 continue
@@ -201,7 +201,7 @@ def main():
     with open("data/uscis_news.json", "w") as f:
         json.dump(output, f, indent=2)
 
-    print(f"\nDone — saved {len(final_items)} items to data/uscis_news.json")
+    print(f"\nDone, saved {len(final_items)} items to data/uscis_news.json")
 
 if __name__ == "__main__":
     main()
