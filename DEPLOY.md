@@ -42,7 +42,7 @@ git push -u origin main
 
 In the **Secrets** box, paste:
 ```toml
-GEMINI_API_KEY = "AIzaSyDKL12b_Hv95tbijAUgaGWjL_DlrWGb_6c"
+GEMINI_API_KEY = "your-gemini-api-key-here"
 ```
 
 7. Click **Deploy!**
@@ -74,5 +74,5 @@ Then open http://localhost:8501 in your browser.
 
 To set your API key locally, create a file `.streamlit/secrets.toml` with:
 ```toml
-GEMINI_API_KEY = "AIzaSyDKL12b_Hv95tbijAUgaGWjL_DlrWGb_6c"
+GEMINI_API_KEY = "your-gemini-api-key-here"
 ```
