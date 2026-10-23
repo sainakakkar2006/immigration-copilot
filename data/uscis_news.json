@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-10-21T13:34:49.594651+00:00",
-  "count": 7,
+  "fetched_at": "2026-10-23T13:12:06.964979+00:00",
+  "count": 9,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -45,18 +45,33 @@
       "source": "White House"
     },
     {
-      "title": "Notice of Order Regarding Exclusion and Removal of DeepSeek Products From Federal Civilian Executive Branch Information Technology Systems and Procurements",
-      "link": "https://www.federalregister.gov/documents/2026/10/20/2026-21447/notice-of-order-regarding-exclusion-and-removal-of-deepseek-products-from-federal-civilian-executive",
-      "summary": "The Department of Homeland Security is publishing notice of the Secretary of Homeland Security's issuance of an order (1) excluding information technology products and services developed by Hangzhou DeepSeek Artificial Intelligence Co., Ltd (DeepSeek), to include affiliated entities as defined in applicable regulations, from federal civilian agency procurements; and, (2) removing all DeepSeek and DeepSeek-affiliate products, and third-party products and services developed using DeepSeek implementations, from civilian agency information technology.",
-      "published": "2026-10-20",
+      "title": "Additional Visa Restrictions on Colombian Individuals to Defend Our Hemisphere Against Corruption and Narcotrafficking",
+      "link": "https://www.state.gov/releases/office-of-the-spokesman/2026/10/additional-visa-restrictions-on-colombian-individuals-to-defend-our-hemisphere-against-corruption-and-narcotrafficking/",
+      "summary": "<p>Marco Rubio, Secretary of State</p>\n\n<section class=\"wp-block-default-hero-container wp-block-default-hero-container--no-featured-content \">\n\n\t<div class=\"wp-block-default-hero module featured-content page-header \">\n\n\t\t\n\t\t<div class=\"row bc_row\">\n\n\t\t\t\n\n\t\t</div>\n\n\t\t<div class=\"row\" dir=\"ltr\">\n\n\t\t\t<div class=\"featured-content__copy\">\n\n\t\t\t\t\n\t\t\t\t<h1 class=\"featured-content__headline stars-above\">\n\n\t\t\t\t\t\n\t\t\t\t\t\tAdditional Visa Restrictions on Colombian Individuals to Defend Our Hemisphere Against Corruption and Narcotrafficking\n\t\t\t\t\t\n\t\t\t\t</h1>\n\n\t\t\t\t<div class=\"article-meta\">\n\n\t\t\t\t\t<!-- get docume",
+      "published": "Thu, 22 Oct 2026 17:58:11 +0000",
+      "source": "State Department"
+    },
+    {
+      "title": "Agency Information Collection Activities; Revision of a Currently Approved Collection: Application for Travel Documents, Parole Documents, and Arrival/Departure Records",
+      "link": "https://www.federalregister.gov/documents/2026/10/23/2026-21684/agency-information-collection-activities-revision-of-a-currently-approved-collection-application-for",
+      "summary": "The Department of Homeland Security (DHS), U.S. Citizenship and Immigration Services (USCIS) invites the general public and other Federal agencies to comment upon this proposed revision of a currently approved collection of information. In accordance with the Paperwork Reduction Act (PRA) of 1995, the information collection notice is published in the Federal Register to obtain comments regarding the nature of the information collection, the categories of respondents, the estimated burden (i.e., the time, effort, and resources used by the respondents to respond), the estimated cost to the respo",
+      "published": "2026-10-23",
       "source": "Federal Register",
       "doc_type": "Notice"
     },
     {
-      "title": "Petition for Modification of Application of Existing Mandatory Safety Standards",
-      "link": "https://www.federalregister.gov/documents/2026/10/16/2026-21175/petition-for-modification-of-application-of-existing-mandatory-safety-standards",
-      "summary": "This notice is a summary of a petition for modification submitted to the Mine Safety and Health Administration (MSHA) by Panther Creek Mining, LLC.",
-      "published": "2026-10-16",
+      "title": "60-Day Notice of Proposed Information Collection: Two (2) Passport Services Information Collections: Application for Consular Report of Birth Abroad of a Citizen of the United States of America and Affidavit of Physical Presence or Residence, Parentage, and Support",
+      "link": "https://www.federalregister.gov/documents/2026/10/23/2026-21662/60-day-notice-of-proposed-information-collection-two-2-passport-services-information-collections",
+      "summary": "The Department of State has submitted the information collections described below to the Office of Management and Budget (OMB) for approval. In accordance with the Paperwork Reduction Act of 1995, we are requesting comments on these collections from all interested individuals and organizations. The purpose of this Notice is to allow 60 days for public comment.",
+      "published": "2026-10-23",
+      "source": "Federal Register",
+      "doc_type": "Notice"
+    },
+    {
+      "title": "Notice of Order Regarding Exclusion and Removal of DeepSeek Products From Federal Civilian Executive Branch Information Technology Systems and Procurements",
+      "link": "https://www.federalregister.gov/documents/2026/10/20/2026-21447/notice-of-order-regarding-exclusion-and-removal-of-deepseek-products-from-federal-civilian-executive",
+      "summary": "The Department of Homeland Security is publishing notice of the Secretary of Homeland Security's issuance of an order (1) excluding information technology products and services developed by Hangzhou DeepSeek Artificial Intelligence Co., Ltd (DeepSeek), to include affiliated entities as defined in applicable regulations, from federal civilian agency procurements; and, (2) removing all DeepSeek and DeepSeek-affiliate products, and third-party products and services developed using DeepSeek implementations, from civilian agency information technology.",
+      "published": "2026-10-20",
       "source": "Federal Register",
       "doc_type": "Notice"
     }
