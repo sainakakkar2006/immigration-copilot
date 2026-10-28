@@ -1,0 +1,28 @@
+name: Keep App Awake
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # Every 6 hours (Streamlit sleeps after about 12 hours idle)
+  workflow_dispatch:          # Also allows manual trigger from GitHub UI
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Open the live app
+        run: python scripts/wake_app.py
