@@ -1680,7 +1680,6 @@ with tab4:
     The AI parts of this tool are powered by Google's Gemini model: it reads uploaded documents
     (including photos), searches the live web for current policy news, translates the entire
     interface into 12 languages, and writes every plain-language explanation.
-    The tool was built as part of the Build with Gemini XPRIZE hackathon.
     """)
 
     st.markdown("---")
