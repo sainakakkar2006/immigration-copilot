@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="968" height="336" viewBox="0 0 968 336" role="img" aria-label="Cloud app requests to government RSS feeds are blocked, so a GitHub Action fetches them and commits JSON that the app reads">
+  <title>Cloud app requests to government RSS feeds are blocked, so a GitHub Action fetches them and commits JSON that the app reads</title>
+  <style>
+    .bg{fill:#ffffff} .card{fill:#f6f8fa;stroke:#d0d7de;stroke-width:1.2}
+    .ai{fill:#eef4ff;stroke:#9cb8ee;stroke-width:1.2} .code{fill:#eefaf1;stroke:#8fcf9f;stroke-width:1.2}
+    .mix{fill:#fff8e6;stroke:#e3c06a;stroke-width:1.2} .bad{fill:#fff0f0;stroke:#e59a9a;stroke-width:1.2}
+    .t{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2328}
+    .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1f2328}
+    .muted{fill:#59636e} .h{font-weight:600} .red{fill:#b42318} .green{fill:#1a7f37} .blue{fill:#1f5fbf}
+    .ln{stroke:#59636e;stroke-width:1.6;fill:none} .lnred{stroke:#b42318;stroke-width:1.6;fill:none;stroke-dasharray:6 5}
+    .ah{fill:#59636e} .ahred{fill:#b42318}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#0d1117} .card{fill:#161b22;stroke:#3d444d}
+      .ai{fill:#13233f;stroke:#3b5f9e} .code{fill:#11291a;stroke:#2f7a45}
+      .mix{fill:#2b2410;stroke:#8a6d1f} .bad{fill:#2d1416;stroke:#a04545}
+      .t,.m{fill:#e6edf3} .muted{fill:#9198a1} .red{fill:#ff7b72} .green{fill:#56d364} .blue{fill:#79b8ff}
+      .ln{stroke:#9198a1} .ah{fill:#9198a1} .lnred{stroke:#ff7b72} .ahred{fill:#ff7b72}
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ahred" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="968" height="336" rx="10"/>
+  <text class="t h" x="24" y="40" font-size="17" text-anchor="start">Why the app does not fetch government feeds itself</text>
+  <text class="t h muted" x="24" y="76" font-size="13" text-anchor="start">First version</text>
+  <rect class="card" x="24" y="88" width="230" height="62" rx="8"/>
+  <text class="t h" x="40" y="114" font-size="13.5" text-anchor="start">Streamlit Community Cloud</text>
+  <text class="t muted" x="40" y="134" font-size="12.5" text-anchor="start">app.py on a cloud server</text>
+  <path class="lnred" d="M256 119 L470 119" marker-end="url(#ar)"/>
+  <text class="t red" x="363" y="108" font-size="12.5" text-anchor="middle">requests come back empty</text>
+  <text class="t red" x="363" y="140" font-size="12.5" text-anchor="middle">data center IPs are blocked</text>
+  <rect class="bad" x="474" y="88" width="230" height="62" rx="8"/>
+  <text class="t" x="490" y="114" font-size="12.5" text-anchor="start">USCIS, White House and</text>
+  <text class="t" x="490" y="132" font-size="12.5" text-anchor="start">State Department RSS</text>
+  <text class="t h muted" x="24" y="190" font-size="13" text-anchor="start">What it does now</text>
+  <rect class="code" x="24" y="202" width="230" height="76" rx="8"/>
+  <text class="t h" x="40" y="228" font-size="13.5" text-anchor="start">GitHub Actions runner</text>
+  <text class="t muted" x="40" y="248" font-size="12.5" text-anchor="start">fetch_news.py, every 2 days</text>
+  <text class="t muted" x="40" y="266" font-size="12.5" text-anchor="start">(not blocked)</text>
+  <path class="ln" d="M256 240 L470 240" marker-end="url(#a)"/>
+  <text class="t muted" x="363" y="230" font-size="12.5" text-anchor="middle">fetch, filter, keep 20</text>
+  <rect class="card" x="474" y="202" width="230" height="76" rx="8"/>
+  <text class="m h" x="490" y="228" font-size="13" text-anchor="start">data/uscis_news.json</text>
+  <text class="t muted" x="490" y="250" font-size="12.5" text-anchor="start">committed to the repo</text>
+  <text class="t muted" x="490" y="268" font-size="12.5" text-anchor="start">by the Action</text>
+  <path class="ln" d="M706 240 L744 240" marker-end="url(#a)"/>
+  <rect class="card" x="748" y="202" width="196" height="76" rx="8"/>
+  <text class="t h" x="764" y="228" font-size="13.5" text-anchor="start">app.py reads the file</text>
+  <text class="t muted" x="764" y="250" font-size="12.5" text-anchor="start">no outbound call to</text>
+  <text class="t muted" x="764" y="268" font-size="12.5" text-anchor="start">the RSS feeds at all</text>
+  <rect class="ai" x="748" y="88" width="196" height="76" rx="8"/>
+  <text class="t h" x="764" y="114" font-size="13.5" text-anchor="start">Federal Register API</text>
+  <text class="t muted" x="764" y="134" font-size="12.5" text-anchor="start">allows direct calls, so the</text>
+  <text class="t muted" x="764" y="152" font-size="12.5" text-anchor="start">app calls it, cached 48 h</text>
+  <path class="ln" d="M846 166 L846 198" marker-end="url(#a)"/>
+  <text class="t muted" x="856" y="186" font-size="12" text-anchor="start">live</text>
+  <text class="t muted" x="24" y="316" font-size="12.5" text-anchor="start">The same code worked on my laptop, which is what made this hard to find.</text>
+</svg>
