@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-11-05T16:16:33.927378+00:00",
-  "count": 5,
+  "fetched_at": "2026-11-07T14:45:51.018991+00:00",
+  "count": 4,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -35,14 +35,6 @@
       "link": "https://www.federalregister.gov/documents/2026/11/02/2026-22320/agency-information-collection-activities-extension-without-change-of-a-currently-approved-collection",
       "summary": "The Department of Homeland Security (DHS), U.S. Citizenship and Immigration Services (USCIS) will be submitting the following information collection request to the Office of Management and Budget (OMB) for review and clearance in accordance with the Paperwork Reduction Act of 1995. The purpose of this notice is to allow an additional 30 days for public comments.",
       "published": "2026-11-02",
-      "source": "Federal Register",
-      "doc_type": "Notice"
-    },
-    {
-      "title": "Notice of Order Regarding Exclusion and Removal of Acronis Products From Federal Civilian Executive Branch Information Technology Systems and Procurements",
-      "link": "https://www.federalregister.gov/documents/2026/10/30/2026-22215/notice-of-order-regarding-exclusion-and-removal-of-acronis-products-from-federal-civilian-executive",
-      "summary": "The Department of Homeland Security is publishing notice of the Secretary of Homeland Security's issuance of an order excluding Acronis AG and all affiliated entities, as well as any covered articles directly or indirectly supplied by them (Acronis covered articles) from federal civilian agency procurements; and, removing all Acronis covered articles from civilian agency information technology systems.",
-      "published": "2026-10-30",
       "source": "Federal Register",
       "doc_type": "Notice"
     }
