@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-11-15T15:28:22.346811+00:00",
-  "count": 4,
+  "fetched_at": "2026-11-17T17:28:08.248912+00:00",
+  "count": 9,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -9,6 +9,20 @@
     "Federal Register"
   ],
   "items": [
+    {
+      "title": "President Trump\u2019s Immigration Policies Are Saving American Lives",
+      "link": "https://www.whitehouse.gov/releases/2026/11/president-trumps-immigration-policies-are-saving-american-lives/",
+      "summary": "<p>Traffic fatalities have fallen to the second-lowest level in American history following President Donald J. Trump\u2019s crackdown on illegal alien truck drivers. That good news joins sharp drops in traffic deaths, overdoses, violent crime, and border fatalities after the largest immigration enforcement surge in modern history \u2014 while Democrats\u2019 open-border policies left chaos, missing kids, [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/releases/2026/11/president-trumps-immigration-policies-are-saving-american-lives/\">President Trump\u2019s Immigration Policies Are Saving American Liv",
+      "published": "Mon, 16 Nov 2026 20:40:32 +0000",
+      "source": "White House"
+    },
+    {
+      "title": "ICYMI: \u201cTrump border crackdown drives encounters to record October low as zero-release streak hits 18 months\u201d",
+      "link": "https://www.whitehouse.gov/releases/2026/11/icymi-trump-border-crackdown-drives-encounters-to-record-october-low-as-zero-release-streak-hits-18-months/",
+      "summary": "<p>For 18 straight months, zero illegal aliens have been released into the United States as President Donald J. Trump continues to deliver the most secure border in American history. It\u2019s a direct consequence of restored enforcement, deterrence, and operational control that has reversed years of chaos \u2014 and the numbers aren\u2019t even close. As Fox [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/releases/2026/11/icymi-trump-border-crackdown-drives-encounters-to-record-october-low-as-zero-release-streak-hits-18-months/\">ICYMI: \u201cTrump border crackdown drives encounters to record Octobe",
+      "published": "Mon, 16 Nov 2026 20:29:50 +0000",
+      "source": "White House"
+    },
     {
       "title": "\u201cDemocrats Will Help Us\u201d: Caravans March North as Dems Vow to Reopen the Border. President Trump Won\u2019t Let It Happen.",
       "link": "https://www.whitehouse.gov/releases/2026/11/democrats-will-help-us-caravans-march-north-as-dems-vow-to-reopen-the-border-president-trump-wont-let-it-happen/",
@@ -29,6 +43,30 @@
       "summary": "<p>BY THE PRESIDENT OF THE UNITED STATES OF AMERICA A PROCLAMATION On September 19, 2025, Proclamation 10973 (Restriction on Entry of Certain Nonimmigrant Workers) (2025 Proclamation), was issued to address significant abuses of the H-1B nonimmigrant visa program. \u00a0The restrictions enacted by the 2025 Proclamation have proven to be highly effective but the underlying conditions [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/presidential-actions/2026/09/restriction-on-entry-of-certain-nonimmigrant-workers-faad/\">Restriction on Entry of Certain Nonimmigrant Workers</a> appeared fi",
       "published": "Fri, 18 Sep 2026 21:42:13 +0000",
       "source": "White House"
+    },
+    {
+      "title": "Modernizing the Labor Market Test and Improving Protections for U.S. Workers in the PERM Immigrant Visa Program",
+      "link": "https://www.federalregister.gov/documents/2026/11/17/2026-23370/modernizing-the-labor-market-test-and-improving-protections-for-us-workers-in-the-perm-immigrant",
+      "summary": "The Department of Labor (Department or DOL) proposes to amend its regulations regarding the certification of job opportunities offered by employers seeking to employ aliens on a permanent basis in the United States. This Notice of Proposed Rulemaking (NPRM or proposed rule) strengthens the standards by which the Department receives and reviews employers' applications for permanent labor certification and improves the integrity of the overall employment-based immigrant visa program to more effectively protect the wages and job opportunities of U.S. workers similarly employed in the United State",
+      "published": "2026-11-17",
+      "source": "Federal Register",
+      "doc_type": "Proposed Rule"
+    },
+    {
+      "title": "Appellate Procedures for the Board of Immigration Appeals",
+      "link": "https://www.federalregister.gov/documents/2026/11/17/2026-23320/appellate-procedures-for-the-board-of-immigration-appeals",
+      "summary": "In February 2026, the Department issued an interim final rule (\"IFR\"), effective March 9, 2026, to streamline Board of Immigration Appeals (\"Board\" or \"BIA\") procedures. The IFR's comment period closed on April 8, 2026. In this final rule, the Department responds to comments received and finalizes the IFR with minor changes.",
+      "published": "2026-11-17",
+      "source": "Federal Register",
+      "doc_type": "Rule"
+    },
+    {
+      "title": "Petition for Modification of Application of Existing Mandatory Safety Standards",
+      "link": "https://www.federalregister.gov/documents/2026/11/17/2026-23311/petition-for-modification-of-application-of-existing-mandatory-safety-standards",
+      "summary": "This notice is a summary of a petition for modification submitted to the Mine Safety and Health Administration (MSHA) by Ramaco Resources Land Holdings, LLC.",
+      "published": "2026-11-17",
+      "source": "Federal Register",
+      "doc_type": "Notice"
     },
     {
       "title": "Pilot for Online Version of Application for a U.S. Passport (Form DS-11)",
