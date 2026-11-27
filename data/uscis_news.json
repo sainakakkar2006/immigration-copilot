@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-11-25T18:30:52.745536+00:00",
-  "count": 1,
+  "fetched_at": "2026-11-27T17:56:17.331839+00:00",
+  "count": 0,
   "sources": [
     "USCIS.gov",
     "DHS.gov",
@@ -8,13 +8,5 @@
     "State Department",
     "Federal Register"
   ],
-  "items": [
-    {
-      "title": "President Trump\u2019s Immigration Policies Are Saving American Lives",
-      "link": "https://www.whitehouse.gov/releases/2026/11/president-trumps-immigration-policies-are-saving-american-lives/",
-      "summary": "<p>Traffic fatalities have fallen to the second-lowest level in American history following President Donald J. Trump\u2019s crackdown on illegal alien truck drivers. That good news joins sharp drops in traffic deaths, overdoses, violent crime, and border fatalities after the largest immigration enforcement surge in modern history \u2014 while Democrats\u2019 open-border policies left chaos, missing kids, [&#8230;]</p>\n<p>The post <a href=\"https://www.whitehouse.gov/releases/2026/11/president-trumps-immigration-policies-are-saving-american-lives/\">President Trump\u2019s Immigration Policies Are Saving American Liv",
-      "published": "Mon, 16 Nov 2026 20:40:32 +0000",
-      "source": "White House"
-    }
-  ]
+  "items": []
 }
